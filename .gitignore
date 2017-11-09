@@ -57,3 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
+/flow-typed/npm/
+es
+node_modules
+umd
+/*.js
+!rollup.config.js
