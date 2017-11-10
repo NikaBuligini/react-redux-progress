@@ -10,6 +10,7 @@
     "index.js",
     "ProgressBar.js",
     "ProgressBarProvider.js",
+    "reducer.js",
     "es"
   ],
   "main": "index.js",
