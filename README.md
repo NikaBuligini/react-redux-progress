@@ -1,6 +1,8 @@
 # react-redux-progress
 Progress bar for React and Redux applications
 
+![](https://media.giphy.com/media/26u48f9ry3CH9D9Vm/giphy.gif)
+
 ## Installation
 
 Using [npm](https://www.npmjs.com/):
@@ -74,17 +76,26 @@ export default connect(
 Start progress (checkout api.js in examples/real-word folder)
 
 ```js
+const startAction = (progressId) => ({
+  type: 'START_ASYNC_ACTION',
+  progressId,
+});
+
+const stopAction = (progressId) => ({
+  type: 'STOP_ASYNC_ACTION',
+  progressId,
+});
+
 // dispatch thunk action
 export function startAsyncAction() {
   return dispatch => {
-    dispatch({
-      [CALL_API]: {
-        types: [REQUEST_ACTION, SUCCESS_ACTION, FAILURE_ACTION],
-        endpoint: `http://example.com/api/users`,
-        schema: Schemas.NORMALIZR_SCHEMA,
-        showProgress: true,
-      },
-    });
+    const progressId = 'unique-string';
+    
+    dispatch(startAction(progressId));
+
+    setTimeout(() => {
+      dispatch(stopAction(progressId));
+    }, 3000);
   };
 }
 ```
