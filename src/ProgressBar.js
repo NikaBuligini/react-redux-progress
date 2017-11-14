@@ -9,6 +9,7 @@ type Props = {
   updateProgress: (progress: number) => void,
   autoIncrement: boolean,
   intervalTime: number,
+  color: string,
 };
 
 type State = {
@@ -34,7 +35,6 @@ const styles = {
     zIndex: '9999',
   },
   percent: {
-    background: '#77b6ff',
     transition: 'all 400ms ease',
     height: '2px',
     boxShadow: '0 0 10px rgba(119, 182, 255, 0.7)',
@@ -49,10 +49,11 @@ function getWrapperStyles(isHidden: boolean) {
   return { ...styles.wrapper, ...visibilityStyles };
 }
 
-function getPercentStyles(percent: number) {
+function getPercentStyles(color: string, percent: number) {
   const customStyles = {
     width: percent <= 0 ? '0' : `${percent}%`,
     opacity: percent >= 99.9 ? '0' : '1',
+    background: color,
   };
 
   return { ...styles.percent, ...customStyles };
@@ -63,6 +64,7 @@ class ProgressBar extends React.Component<Props, State> {
     percent: -1,
     autoIncrement: true,
     intervalTime: 450,
+    color: '#77b6ff',
   };
 
   state = {
@@ -143,7 +145,7 @@ class ProgressBar extends React.Component<Props, State> {
     // Set `state.percent` as width.
     return (
       <div style={getWrapperStyles(isHidden)}>
-        <div style={getPercentStyles(percent)} />
+        <div style={getPercentStyles(this.props.color, percent)} />
       </div>
     );
   }

@@ -29,3 +29,33 @@ exports[`<ProgressBar /> should initially render progress bar 1`] = `
   />
 </div>
 `;
+
+exports[`<ProgressBar /> should render progress bar using passed color 1`] = `
+<div
+  style={
+    Object {
+      "left": "0",
+      "opacity": "0",
+      "position": "fixed",
+      "top": "0",
+      "transition": "all 500mx ease-in-out",
+      "visibility": "hidden",
+      "width": "100%",
+      "zIndex": "-10",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "background": "#db7093",
+        "boxShadow": "0 0 10px rgba(119, 182, 255, 0.7)",
+        "height": "2px",
+        "opacity": "1",
+        "transition": "all 400ms ease",
+        "width": "0",
+      }
+    }
+  />
+</div>
+`;

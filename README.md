@@ -35,9 +35,10 @@ You can find the library on `window.ReactReduxProgress`.
 ```js
 import ProgressBar from 'react-redux-progress';
 
+// default color is #77b6ff
 const Layout = ({ isProgressActive, children }) => (
   <div>
-    <ProgressBar isActive={isProgressActive} />
+    <ProgressBar isActive={isProgressActive} color="#db7093" />
     {children}
   </div>
 )
@@ -103,3 +104,7 @@ export function startAsyncAction() {
 ```
 
 Checkout examples/real-world for more
+
+## Tests
+
+$ yarn test

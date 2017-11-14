@@ -26,6 +26,12 @@ describe('<ProgressBar />', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('should render progress bar using passed color', () => {
+    const component = renderer.create(<ProgressBar color="#db7093" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should set state.percent as props.percent', () => {
     const expected = 50;
     const renderedComponent = mount(<ProgressBar percent={expected} />);
