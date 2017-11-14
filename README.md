@@ -3,6 +3,8 @@ Progress bar for React and Redux applications
 
 ![](https://media.giphy.com/media/26u48f9ry3CH9D9Vm/giphy.gif)
 
+[Demo](http://react-redux-progress.surge.sh/)
+
 ## Installation
 
 Using [npm](https://www.npmjs.com/):
@@ -73,7 +75,7 @@ export default connect(
 )(Layout);
 ```
 
-Start progress (checkout api.js in examples/real-word folder)
+Async action
 
 ```js
 const startAction = (progressId) => ({
@@ -99,3 +101,5 @@ export function startAsyncAction() {
   };
 }
 ```
+
+Checkout examples/real-world for more
