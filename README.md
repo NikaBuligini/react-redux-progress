@@ -25,7 +25,7 @@ var ProgressBar = require('react-redux-progress');
 The UMD build is also available on [unpkg](https://unpkg.com):
 
 ```html
-<script src="https://unpkg.com/react-redux-progress/umd/react-router-progress.min.js"></script>
+<script src="https://unpkg.com/react-redux-progress/umd/react-redux-progress.min.js"></script>
 ```
 
 You can find the library on `window.ReactReduxProgress`.
