@@ -37,7 +37,10 @@ const initialState: ProgressState = {
   fetchStatus: {},
 };
 
-export default function progress(state: ProgressState = initialState, action: ProgressAction) {
+export default function progress(
+  state: ProgressState = initialState,
+  action: ProgressAction,
+) {
   if (action.progressId) {
     const status = state.fetchStatus[action.progressId];
 
