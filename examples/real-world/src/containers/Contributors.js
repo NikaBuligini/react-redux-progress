@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -29,15 +27,7 @@ const ReloadButton = styled.button`
   transition: 0.5s;
 `;
 
-const ContributorList = ({
-  isFetching,
-  contributors,
-  onReload,
-}: {
-  isFetching: boolean,
-  contributors: Array<Object>,
-  onReload: Event => void,
-}) => {
+const ContributorList = ({ isFetching, contributors, onReload }) => {
   if (isFetching) {
     return <span>Loading...</span>;
   }
@@ -56,29 +46,18 @@ const ContributorList = ({
   );
 };
 
-type Props = {
-  loadContributors: (
-    owner: string,
-    repo: string,
-    force: boolean,
-    callback?: Function,
-  ) => void,
-  isFetching: boolean,
-  contributors: Array<Object>,
-};
-
-class Cotributors extends React.Component<Props> {
+class Cotributors extends React.Component {
   componentDidMount() {
     this.loadContributors();
   }
 
-  handleReload = (event: Event) => {
+  handleReload = event => {
     event.preventDefault();
 
     this.loadContributors(true);
   };
 
-  loadContributors = (force: boolean = false) => {
+  loadContributors = (force = false) => {
     this.props.loadContributors(OWNER, REPO, force);
   };
 

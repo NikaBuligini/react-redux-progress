@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import styled from 'styled-components';
 
@@ -27,19 +25,7 @@ const Avatar = styled.a`
   }
 `;
 
-type Props = {
-  id: number,
-  avatarUrl: string,
-  contributions: number,
-  followersUrl: string,
-  htmlUrl: string,
-  login: string,
-  organizationsUrl: string,
-  reposUrl: string,
-  type: 'User',
-};
-
-const Contributor = (contributor: Props) => (
+const Contributor = contributor => (
   <Wrapper>
     <Avatar href={contributor.htmlUrl} target="_blank">
       <img src={contributor.avatarUrl} alt={contributor.login} />

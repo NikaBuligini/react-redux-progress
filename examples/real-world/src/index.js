@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
@@ -12,7 +14,7 @@ import configureStore from './configureStore';
 import App from './App';
 
 // Grab the state from a global variable injected into the server-generated HTML
-const preloadedState: ?Object = window.__PRELOADED_STATE__;
+const preloadedState = window.__PRELOADED_STATE__;
 
 // Allow the passed state to be garbage-collected
 delete window.__PRELOADED_STATE__;

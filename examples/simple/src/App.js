@@ -1,6 +1,5 @@
 import React from 'react';
 import ProgressBar from '../../../index';
-import { setTimeout } from 'core-js/library/web/timers';
 
 function Button({ onClick, children, isProgressActive }) {
   const color = isProgressActive ? 'cornflowerblue' : 'palevioletred';

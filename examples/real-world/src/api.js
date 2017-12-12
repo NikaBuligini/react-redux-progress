@@ -1,11 +1,9 @@
-// @flow
-
 import fetch from 'isomorphic-fetch';
 import { schema as Schema, normalize } from 'normalizr';
 import { camelizeKeys } from 'humps';
 import uuid from 'uuid/v4';
 
-const defaultHeaders: Object = {
+const defaultHeaders = {
   'Content-Type': 'application/json',
 };
 
@@ -17,16 +15,7 @@ export function toggleProgress() {
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
-async function callApi(
-  endpoint,
-  schema,
-  method,
-  customHeaders = {},
-  body,
-): {
-  response?: Object,
-  error?: Object,
-} {
+async function callApi(endpoint, schema, method, customHeaders = {}, body) {
   let init = {
     method,
     credentials: 'same-origin',
@@ -80,13 +69,11 @@ export const Schemas = {
 };
 
 // Action key that carries API call info interpreted by this Redux middleware.
-export const CALL_API: string = Symbol('Call API');
+export const CALL_API = Symbol('Call API');
 
 // A Redux middleware that interprets actions with CALL_API info specified.
 // Performs the call and promises when such actions are dispatched.
-export default (store: Object) => (next: Function) => async (
-  action: Object,
-) => {
+export default store => next => async action => {
   const callAPI = action[CALL_API];
   if (typeof callAPI === 'undefined') {
     return next(action);

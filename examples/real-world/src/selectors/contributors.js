@@ -1,11 +1,10 @@
 /* eslint-disable import/prefer-default-export */
-// @flow
 
-function mapIdsToUsers(state: Object, ids: Array<number>) {
+function mapIdsToUsers(state, ids) {
   return ids.map(id => state.entities.users[id]);
 }
 
-export function getContributors(state: Object, owner: string, repo: string) {
+export function getContributors(state, owner, repo) {
   const key = `${owner}/${repo}`;
 
   const fetchStatus = state.fetch.contributorsByRepo[key];

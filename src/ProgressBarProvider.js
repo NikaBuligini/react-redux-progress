@@ -6,6 +6,8 @@ import ProgressBar from './ProgressBar';
 type Props = {
   isActive: boolean,
   color: string,
+  className?: string,
+  styles?: Object,
 };
 
 type State = {
@@ -48,6 +50,7 @@ class ProgressBarProvider extends React.PureComponent<Props, State> {
   render() {
     return (
       <ProgressBar
+        {...this.props}
         percent={this.state.progress}
         updateProgress={this.updateProgress}
         color={this.props.color}

@@ -1,5 +1,3 @@
-import { setTimeout } from 'core-js/library/web/timers';
-
 /* eslint-disable no-param-reassign */
 
 export default () => next => action => {
