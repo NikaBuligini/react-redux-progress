@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+
 import { createStore, compose } from 'redux';
 
 export default function configureStore(
@@ -5,7 +7,6 @@ export default function configureStore(
   middlewares,
   rootReducer,
 ) {
-  // eslint-disable-next-line no-underscore-dangle
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

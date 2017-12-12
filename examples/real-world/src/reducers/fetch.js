@@ -1,15 +1,6 @@
-// @flow
-
 import { combineReducers } from 'redux';
 import union from 'lodash/union';
 import * as ActionTypes from '../actions';
-
-type FetchStatusConfig = {
-  types: Array<string>,
-  mapActionToKey: Object => string,
-  initialState: mixed | Object,
-  retrieveData: (state: any, action: any) => Object,
-};
 
 // Creates a reducer managing pagination, given the action types to handle,
 // and a function telling how to extract the key from an action.
@@ -18,7 +9,7 @@ export const fetchStatus = ({
   mapActionToKey,
   initialState,
   retrieveData,
-}: FetchStatusConfig) => {
+}) => {
   if (!Array.isArray(types) || types.length !== 3) {
     throw new Error('Expected types to be an array of three elements.');
   }
@@ -45,7 +36,7 @@ export const fetchStatus = ({
   }
 
   /* eslint-disable default-case, consistent-return */
-  const updateFetchStatus = (state = initialStatusState, action: Object) => {
+  const updateFetchStatus = (state = initialStatusState, action) => {
     switch (action.type) {
       case requestType: {
         return {
@@ -77,7 +68,7 @@ export const fetchStatus = ({
   };
   /* eslint-enable default-case, consistent-return */
 
-  return (state: Object = {}, action: Object) => {
+  return (state = {}, action) => {
     // Update pagination by key
     switch (action.type) {
       case requestType:

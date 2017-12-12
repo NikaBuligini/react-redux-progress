@@ -1,31 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import ProgressBar from '../../../index';
-import { setTimeout } from 'core-js/library/web/timers';
+import ProgressBarProvider from '../../../index';
 import Contributors from './containers/Contributors';
 
-type Props = {
-  isProgressActive: boolean,
+const customStyles = {
+  height: '3px',
 };
 
-class App extends React.Component<Props> {
-  handleStartProgress = () => {
-    this.setState({ isActive: true }, () => {
-      setTimeout(this.handleStopProgress, 5000);
-    });
-  };
-
-  handleStopProgress = () => {
-    this.setState({ isActive: false });
-  };
-
+class App extends React.PureComponent {
   render() {
-    const { isProgressActive } = this.props;
-
     return (
       <div>
-        <ProgressBar isActive={isProgressActive} />
+        <ProgressBarProvider
+          isActive={this.props.isProgressActive}
+          className="my-custom-class"
+          styles={customStyles}
+        />
         <Contributors />
       </div>
     );

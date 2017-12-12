@@ -7,10 +7,6 @@ import ProgressBar from '../ProgressBar';
 
 let clock = null;
 
-function Component() {
-  return <div />;
-}
-
 describe('<ProgressBar />', () => {
   beforeEach(() => {
     clock = sinon.useFakeTimers();
@@ -22,6 +18,28 @@ describe('<ProgressBar />', () => {
 
   it('should initially render progress bar', () => {
     const component = renderer.create(<ProgressBar />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should render progress bar with color', () => {
+    const component = renderer.create(<ProgressBar color="red" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should render progress bar with styles', () => {
+    const component = renderer.create(
+      <ProgressBar styles={{ height: '5px' }} />,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should render progress bar with className', () => {
+    const component = renderer.create(
+      <ProgressBar className="my-custom-classname" />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
