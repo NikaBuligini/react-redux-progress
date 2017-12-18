@@ -22,8 +22,14 @@ describe('<ProgressBar />', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should render progress bar with color', () => {
+  it('should render progress bar with color name', () => {
     const component = renderer.create(<ProgressBar color="red" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should render progress bar with color hex', () => {
+    const component = renderer.create(<ProgressBar color="#ff0000" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
