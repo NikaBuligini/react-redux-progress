@@ -82,7 +82,6 @@ class ProgressBar extends React.Component<Props, State> {
     autoIncrement: true,
     intervalTime: 450,
     color: DEFAULT_COLOR,
-    absolute: false,
   };
 
   state = {

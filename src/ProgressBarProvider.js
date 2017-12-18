@@ -8,6 +8,7 @@ type Props = {
   color: string,
   className?: string,
   styles?: Object,
+  absolute?: boolean,
 };
 
 type State = {
@@ -16,6 +17,10 @@ type State = {
 
 class ProgressBarProvider extends React.PureComponent<Props, State> {
   static displayName = 'ProgressBarProvider';
+
+  static defaultProps = {
+    absolute: false,
+  };
 
   state = {
     progress: -1,
