@@ -1,8 +1,10 @@
 // @flow
 
 import React from 'react';
+import { nameToHex, hexToRgb } from './utils/hexToRgb';
 
 const MAX_PERCENT = 85;
+const DEFAULT_COLOR = '#77b6ff';
 
 type Props = {
   percent: number,
@@ -10,17 +12,18 @@ type Props = {
   autoIncrement: boolean,
   intervalTime: number,
   color: string,
+  absolute: boolean,
   styles?: Object,
   className?: string,
 };
 
 type State = {
   percent: number,
+  color: string,
 };
 
 const styles = {
   wrapper: {
-    position: 'fixed',
     top: '0',
     left: '0',
     width: '100%',
@@ -39,16 +42,19 @@ const styles = {
   percent: {
     transition: 'all 400ms ease',
     height: '2px',
-    boxShadow: '0 0 10px rgba(119, 182, 255, 0.7)',
   },
 };
 
-function getWrapperStyles(isHidden: boolean) {
+function getWrapperStyles(isHidden: boolean, isAbsolute: boolean) {
   const visibilityStyles = isHidden
     ? styles.hiddenWrapper
     : styles.visibleWrapper;
 
-  return { ...styles.wrapper, ...visibilityStyles };
+  return {
+    ...styles.wrapper,
+    ...visibilityStyles,
+    position: isAbsolute ? 'absolute' : 'fixed',
+  };
 }
 
 function getPercentStyles(
@@ -59,10 +65,15 @@ function getPercentStyles(
   const customStyles = {
     width: percent <= 0 ? '0' : `${percent}%`,
     opacity: percent >= 99.9 ? '0' : '1',
-    background: color,
   };
 
-  return { ...styles.percent, ...clientStyles, ...customStyles };
+  return {
+    ...styles.percent,
+    background: color,
+    boxShadow: `0 0 10px ${hexToRgb(color, 0.7)}`,
+    ...clientStyles,
+    ...customStyles,
+  };
 }
 
 class ProgressBar extends React.Component<Props, State> {
@@ -70,11 +81,13 @@ class ProgressBar extends React.Component<Props, State> {
     percent: -1,
     autoIncrement: true,
     intervalTime: 450,
-    color: '#77b6ff',
+    color: DEFAULT_COLOR,
+    absolute: false,
   };
 
   state = {
     percent: this.props.percent,
+    color: nameToHex(this.props.color, DEFAULT_COLOR),
   };
 
   componentDidMount() {
@@ -150,10 +163,10 @@ class ProgressBar extends React.Component<Props, State> {
 
     // Set `state.percent` as width.
     return (
-      <div style={getWrapperStyles(isHidden)}>
+      <div style={getWrapperStyles(isHidden, this.props.absolute)}>
         <div
           className={this.props.className}
-          style={getPercentStyles(this.props.color, percent, this.props.styles)}
+          style={getPercentStyles(this.state.color, percent, this.props.styles)}
         />
       </div>
     );

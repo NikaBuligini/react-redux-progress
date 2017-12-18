@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
+
 const fs = require('fs');
-const execSync = require('child_process').execSync;
+const { execSync } = require('child_process');
 const prettyBytes = require('pretty-bytes');
 const gzipSize = require('gzip-size');
 
