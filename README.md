@@ -9,11 +9,15 @@ Progress bar for React and Redux applications
 
 Using [npm](https://www.npmjs.com/):
 
+```shell
 $ npm install --save react-redux-progress
+```
 
 Using [yarn](https://yarnpkg.com/):
 
+```shell
 $ yarn add react-redux-progress
+```
 
 ```js
 // using ES6 modules
@@ -105,6 +109,22 @@ export function startAsyncAction() {
 
 Checkout examples/real-world for more
 
+## Prop Types
+| Property | Type | Required? | Description |
+|:---|:---|:---:|:---|
+| isActive | Boolean | ✓ | Progress activation flag |
+| color | String |   | Custom color for progress bar percent |
+| className | String |  | Optional custom CSS class name to attach to root `Percent` element. |
+| styles | Object |  | Optional custom CSS styles to attach to root `Percent` element. |
+
+## Contributions
+
+Use [GitHub issues](https://github.com/NikaBuligini/react-redux-progress/issues) for requests.
+
+I actively welcome pull requests; learn how to [contribute](https://github.com/NikaBuligini/react-redux-progress/blob/master/CONTRIBUTING.md).
+
 ## Tests
 
+```shell
 $ yarn test
+```
