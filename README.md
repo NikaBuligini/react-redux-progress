@@ -110,12 +110,13 @@ export function startAsyncAction() {
 Checkout examples/real-world for more
 
 ## Prop Types
-| Property | Type | Required? | Description |
-|:---|:---|:---:|:---|
-| isActive | Boolean | ✓ | Progress activation flag |
-| color | String |   | Custom color for progress bar percent |
-| className | String |  | Optional custom CSS class name to attach to root `Percent` element. |
-| styles | Object |  | Optional custom CSS styles to attach to root `Percent` element. |
+| Property | Type | Required? | Default | Description |
+|:---|:---|:---:|:---:|:---|
+| isActive | Boolean | ✓ |  | Progress activation flag |
+| color | String |   | `#77b6ff` | Custom color for progress bar percent |
+| className | String |  |  | Optional custom CSS class name to attach to root `Percent` element. |
+| styles | Object |  |  | Optional custom CSS styles to attach to root `Percent` element. |
+| absolute | Boolean |  | `false` | Position property for `Percent` |
 
 ## Contributions
 
