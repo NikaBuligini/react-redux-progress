@@ -11,6 +11,7 @@
     "ProgressBar.js",
     "ProgressBarProvider.js",
     "reducer.js",
+    "hexToRgb.js",
     "umd",
     "es"
   ],

@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { nameToHex, hexToRgb } from './utils/hexToRgb';
+import { nameToHex, hexToRgb } from './hexToRgb';
 
 const MAX_PERCENT = 85;
 const DEFAULT_COLOR = '#77b6ff';
