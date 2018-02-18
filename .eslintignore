@@ -1,5 +1,12 @@
 node_modules
 flow-typed
 coverage
+examples
 es
 umd
+hexToRgb.js
+index.js
+ProgressBar.js
+ProgressBarProvider.js
+Raw.js
+reducer.js
