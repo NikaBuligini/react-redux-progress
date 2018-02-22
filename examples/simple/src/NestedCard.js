@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ProgressBar from '../../../index';
+import ProgressBar from '../../../ProgressBarProvider';
 
 const Wrapper = styled.div`
   margin-top: 40px;

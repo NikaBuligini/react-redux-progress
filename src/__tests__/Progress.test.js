@@ -2,12 +2,14 @@ import React from 'react';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
 
-import ProgressBarProvier from '../index';
-import ProgressBar from '../ProgressBar';
+import Progress from '../Progress';
+import Ticker from '../Ticker';
 
 let clock = null;
 
-describe('<ProgressBarProvier />', () => {
+describe('<Progress />', () => {
+  const renderProgress = percent => percent;
+
   beforeEach(() => {
     clock = sinon.useFakeTimers();
   });
@@ -17,19 +19,25 @@ describe('<ProgressBarProvier />', () => {
   });
 
   it('should render <ProgressBar />', () => {
-    const renderedComponent = mount(<ProgressBarProvier />);
+    const renderedComponent = mount(
+      <Progress renderProgress={renderProgress} />,
+    );
 
-    expect(renderedComponent.find(ProgressBar).length).toBe(1);
+    expect(renderedComponent.find(Ticker).length).toBe(1);
   });
 
   it('should initially have state.progress = -1', () => {
-    const renderedComponent = mount(<ProgressBarProvier />);
+    const renderedComponent = mount(
+      <Progress renderProgress={renderProgress} />,
+    );
 
     expect(renderedComponent.state().progress).toBe(-1);
   });
 
   it('should update state.progress when called updateProgress()', () => {
-    const renderedComponent = mount(<ProgressBarProvier />);
+    const renderedComponent = mount(
+      <Progress renderProgress={renderProgress} />,
+    );
 
     const inst = renderedComponent.instance();
     inst.updateProgress(10);
@@ -37,21 +45,27 @@ describe('<ProgressBarProvier />', () => {
   });
 
   it('should update state.progress to 0 when progress activated', () => {
-    const renderedComponent = mount(<ProgressBarProvier isActive={false} />);
+    const renderedComponent = mount(
+      <Progress renderProgress={renderProgress} isActive={false} />,
+    );
     renderedComponent.setProps({ isActive: true });
     expect(renderedComponent.state().progress).toBe(0);
   });
 
   it('should update state.progress to 100 when progress deactivated', () => {
-    const renderedComponent = mount(<ProgressBarProvier isActive />);
+    const renderedComponent = mount(
+      <Progress renderProgress={renderProgress} isActive />,
+    );
     renderedComponent.setState({ progress: 30 });
     renderedComponent.setProps({ isActive: false });
     expect(renderedComponent.state().progress).toBe(100);
   });
 
   it('should have displayName', () => {
-    const renderedComponent = mount(<ProgressBarProvier />);
+    const renderedComponent = mount(
+      <Progress renderProgress={renderProgress} />,
+    );
     const inst = renderedComponent.instance();
-    expect(inst.constructor.displayName).toBe('ProgressBarProvider');
+    expect(inst.constructor.displayName).toBe('Progress');
   });
 });

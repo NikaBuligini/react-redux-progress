@@ -1,31 +1,62 @@
+/* eslint-disable no-console */
 // @flow
 
 import React from 'react';
 
 const MAX_PERCENT = 85;
 
+const isDevelopment =
+  ['production', 'test'].indexOf(process.env.NODE_ENV) === -1;
+
+const warn = (...args) => {
+  if (isDevelopment) {
+    console.warn(...args);
+  }
+};
+
+/* eslint-disable react/no-unused-prop-types */
 type Props = {
   percent: number,
   updateProgress: (progress: number) => void,
   autoIncrement: boolean,
   intervalTime: number,
   renderProgress: (percent: number) => React$Element<*>,
+  maxPercent: number,
 };
+/* eslint-enable react/no-unused-prop-types */
 
 type State = {
   percent: number,
+  maxPercent: number,
 };
 
-class ProgressBar extends React.Component<Props, State> {
+class Ticker extends React.Component<Props, State> {
   static defaultProps = {
     percent: -1,
     autoIncrement: true,
     intervalTime: 450,
+    maxPercent: MAX_PERCENT,
+    renderProgress: () => null,
   };
 
-  state = {
-    percent: this.props.percent,
-  };
+  state = this.getInitialState(this.props);
+
+  getInitialState(props: Props): State {
+    let { maxPercent } = props;
+
+    if (
+      typeof maxPercent !== 'number' ||
+      (maxPercent < 1 || maxPercent > 100)
+    ) {
+      warn('fallback to default maxPercent');
+      maxPercent = MAX_PERCENT;
+    }
+
+    return {
+      maxPercent,
+      percent: this.props.percent,
+    };
+  }
 
   componentDidMount() {
     this.handleProps(this.props);
@@ -65,7 +96,7 @@ class ProgressBar extends React.Component<Props, State> {
     let { percent } = this.state;
 
     percent += (Math.random() + 1 - Math.random()) * 3; // eslint-disable-line
-    percent = percent < MAX_PERCENT ? percent : MAX_PERCENT;
+    percent = percent < this.state.maxPercent ? percent : this.state.maxPercent;
 
     this.setState({ percent });
   };
@@ -97,4 +128,4 @@ class ProgressBar extends React.Component<Props, State> {
   }
 }
 
-export default ProgressBar;
+export default Ticker;

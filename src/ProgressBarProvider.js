@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import RawProgress from './Raw';
+import Progress from './Progress';
 import { nameToHex, hexToRgb } from './hexToRgb';
 
 const DEFAULT_COLOR = '#77b6ff';
@@ -101,7 +101,7 @@ class ProgressBarProvider extends React.PureComponent<Props, State> {
 
   render() {
     return (
-      <RawProgress
+      <Progress
         isActive={this.props.isActive}
         renderProgress={this.renderProgress}
       />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import ProgressBarProvider from '../../../index';
+import ProgressBarProvider from '../../../ProgressBarProvider';
 import Contributors from './containers/Contributors';
 
 const customStyles = {

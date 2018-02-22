@@ -8,9 +8,9 @@
   "private": false,
   "files": [
     "index.js",
-    "ProgressBar.js",
+    "Ticker.js",
+    "Progress.js",
     "ProgressBarProvider.js",
-    "Raw.js",
     "reducer.js",
     "hexToRgb.js",
     "umd",
@@ -27,7 +27,8 @@
     "lint": "node ./scripts/eslint",
     "precommit": "lint-staged",
     "prettier": "prettier --write \"{example,scripts,src}/**/*.{js,json,md}\"",
-    "prettier:diff": "prettier --list-different \"{example,scripts,src}/**/*.{js,json,md}\"",
+    "prettier:diff":
+      "prettier --list-different \"{example,scripts,src}/**/*.{js,json,md}\"",
     "test": "node ./scripts/start-test --env=jsdom",
     "test:coverage": "yarn test:clean && yarn test --coverage",
     "test:verbose": "yarn test --verbose",
@@ -86,27 +87,17 @@
   },
   "dependencies": {},
   "jest": {
-    "setupFiles": [
-      "raf/polyfill",
-      "<rootDir>/config/testsSetup.js"
-    ],
-    "collectCoverageFrom": [
-      "src/*.{js,jsx}"
-    ],
+    "setupFiles": ["raf/polyfill", "<rootDir>/config/testsSetup.js"],
+    "collectCoverageFrom": ["src/*.{js,jsx}"],
     "testEnvironment": "node",
     "testMatch": [
       "<rootDir>/src/__tests__/**/*.js?(x)",
       "<rootDir>/src/?(*.)(spec|test).js?(x)"
     ],
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ]
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"]
   },
   "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
   },
   "keywords": [
     "react",

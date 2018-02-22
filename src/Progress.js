@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import ProgressBar from './ProgressBar';
+import Ticker from './Ticker';
 
 type Props = {
   isActive: boolean,
@@ -12,8 +12,8 @@ type State = {
   progress: number,
 };
 
-class ProgressBarProvider extends React.PureComponent<Props, State> {
-  static displayName = 'ProgressBarProvider';
+class Progress extends React.PureComponent<Props, State> {
+  static displayName = 'Progress';
 
   state = {
     progress: -1,
@@ -47,7 +47,7 @@ class ProgressBarProvider extends React.PureComponent<Props, State> {
 
   render() {
     return (
-      <ProgressBar
+      <Ticker
         {...this.props}
         percent={this.state.progress}
         updateProgress={this.updateProgress}
@@ -57,4 +57,4 @@ class ProgressBarProvider extends React.PureComponent<Props, State> {
   }
 }
 
-export default ProgressBarProvider;
+export default Progress;

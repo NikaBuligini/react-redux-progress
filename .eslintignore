@@ -6,7 +6,7 @@ es
 umd
 hexToRgb.js
 index.js
-ProgressBar.js
+Ticker.js
+Progress.js
 ProgressBarProvider.js
-Raw.js
 reducer.js
