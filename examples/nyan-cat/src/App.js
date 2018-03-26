@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { Motion, spring } from 'react-motion';
 import Progress from '../../../index';
-import CatSvg from './cat.svg';
 import Intro from './intro.ogg';
 import Loop from './loop.ogg';
+import Cat from './Cat';
 
 const Wrapper = styled.div`
   .trigger-button-container {
@@ -57,8 +57,6 @@ const RainbowColor = ({ color }) => (
   <div className="color" style={{ backgroundColor: color }} />
 );
 
-const Cat = () => <div />;
-
 const ProgressPercent = styled.div`
   width: ${props => props.width};
   opacity: ${props => props.opacity};
@@ -71,7 +69,10 @@ const NyanProgress = ({ percent }) => {
 
   return (
     <ProgressContainer isHidden={isHidden}>
-      <Motion defaultStyle={{ x: 0 }} style={{ x: spring(width) }}>
+      <Motion
+        defaultStyle={{ x: 0, iteration: 0 }}
+        style={{ x: spring(width), iteration: spring(5) }}
+      >
         {value => (
           <div style={{ width: `${value.x}%`, opacity, position: 'relative' }}>
             <RainbowColor color="#fc0000" />
@@ -80,17 +81,7 @@ const NyanProgress = ({ percent }) => {
             <RainbowColor color="#27fc01" />
             <RainbowColor color="#009dfc" />
             <RainbowColor color="#5e29fd" />
-            <span
-              dangerouslySetInnerHTML={{ __html: CatSvg }}
-              style={{
-                position: 'absolute',
-                visibility: width > 0 ? 'visible' : 'hidden',
-                width: '40px',
-                top: '-2px',
-                right: '-20px',
-                opacity,
-              }}
-            />
+            <Cat isHidden={isHidden} width={width} opacity={opacity} />
           </div>
         )}
       </Motion>
