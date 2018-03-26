@@ -140,8 +140,8 @@ class App extends React.Component {
           isActive={isProgressActive}
           renderProgress={percent => <NyanProgress percent={percent} />}
         />
-        <audio ref={this.saveIntroRef} src={Intro} preload />
-        <audio ref={this.saveLoopRef} src={Loop} preload />
+        <audio ref={this.saveIntroRef} src={Intro} preload={1} />
+        <audio ref={this.saveLoopRef} src={Loop} preload={1} />
         <div className="trigger-button-container">
           <TriggerButton
             type="button"
