@@ -89,20 +89,33 @@ const NyanProgress = ({ percent }) => {
   );
 };
 
+function playAudio(audio) {
+  const isPlaying =
+    audio.currentTime > 0 &&
+    !audio.paused &&
+    !audio.ended &&
+    audio.readyState > 2;
+
+  if (!isPlaying) {
+    audio.play();
+  }
+}
+
 class App extends React.Component {
   state = {
-    isActive: false,
+    state: 'ended',
   };
 
   handleStartProgress = () => {
     this.setState({ state: 'wait' }, () => {
       this.introRef.onended = () => {
-        this.loopRef.play();
+        playAudio(this.loopRef);
+
         this.setState({ state: 'started' }, () => {
           // setTimeout(this.handleStopProgress, 5000);
         });
       };
-      this.introRef.play();
+      playAudio(this.introRef);
     });
   };
 
@@ -141,7 +154,7 @@ class App extends React.Component {
           renderProgress={percent => <NyanProgress percent={percent} />}
         />
         <audio ref={this.saveIntroRef} src={Intro} preload={1} />
-        <audio ref={this.saveLoopRef} src={Loop} preload={1} />
+        <audio ref={this.saveLoopRef} src={Loop} preload={1} loop={1} />
         <div className="trigger-button-container">
           <TriggerButton
             type="button"
