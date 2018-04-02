@@ -21,7 +21,8 @@ const TriggerButton = styled.button`
   margin: 0.5rem 1rem;
   width: 11rem;
   background: transparent;
-  color: ${props => props.color};
+  color: #fff;
+  background-color: ${props => props.color};
   border: 2px solid ${props => props.color};
   cursor: pointer;
   outline: 0;
@@ -149,10 +150,9 @@ class App extends React.Component {
 
     return (
       <Wrapper>
-        <Progress
-          isActive={isProgressActive}
-          renderProgress={percent => <NyanProgress percent={percent} />}
-        />
+        <Progress isActive={isProgressActive}>
+          {percent => <NyanProgress percent={percent} />}
+        </Progress>
         <audio ref={this.saveIntroRef} src={Intro} preload={1} />
         <audio ref={this.saveLoopRef} src={Loop} preload={1} loop={1} />
         <div className="trigger-button-container">

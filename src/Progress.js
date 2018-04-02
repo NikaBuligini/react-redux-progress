@@ -5,7 +5,7 @@ import Ticker from './Ticker';
 
 type Props = {
   isActive: boolean,
-  renderProgress: (percent: number) => React$Element<*>,
+  children: (percent: number) => React$Element<*>,
 };
 
 type State = {
@@ -51,7 +51,7 @@ class Progress extends React.PureComponent<Props, State> {
         {...this.props}
         percent={this.state.progress}
         updateProgress={this.updateProgress}
-        renderProgress={this.props.renderProgress}
+        renderProgress={this.props.children}
       />
     );
   }
