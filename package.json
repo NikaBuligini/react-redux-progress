@@ -1,6 +1,6 @@
 {
   "name": "react-redux-progress",
-  "version": "1.0.0",
+  "version": "1.0.0-rc.0",
   "description": "Progress bar for React and Redux applications",
   "repository": "https://github.com/NikaBuligini/react-redux-progress",
   "author": "Nikoloz Buligini",
@@ -27,8 +27,7 @@
     "lint": "node ./scripts/eslint",
     "precommit": "lint-staged",
     "prettier": "prettier --write \"{examples,scripts,src}/**/*.{js,json,md}\"",
-    "prettier:diff":
-      "prettier --list-different \"{examples,scripts,src}/**/*.{js,json,md}\"",
+    "prettier:diff": "prettier --list-different \"{examples,scripts,src}/**/*.{js,json,md}\"",
     "test": "node ./scripts/start-test --env=jsdom",
     "test:coverage": "yarn test:clean && yarn test --coverage",
     "test:verbose": "yarn test --verbose",
@@ -87,17 +86,27 @@
   },
   "dependencies": {},
   "jest": {
-    "setupFiles": ["raf/polyfill", "<rootDir>/config/testsSetup.js"],
-    "collectCoverageFrom": ["src/*.{js,jsx}"],
+    "setupFiles": [
+      "raf/polyfill",
+      "<rootDir>/config/testsSetup.js"
+    ],
+    "collectCoverageFrom": [
+      "src/*.{js,jsx}"
+    ],
     "testEnvironment": "node",
     "testMatch": [
       "<rootDir>/src/__tests__/**/*.js?(x)",
       "<rootDir>/src/?(*.)(spec|test).js?(x)"
     ],
-    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"]
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ]
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["prettier --write", "git add"]
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "keywords": [
     "react",
