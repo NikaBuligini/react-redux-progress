@@ -6,5 +6,6 @@
 
 [libs]
 flow-typed/npm
+flow-typed/decls
 
 [options]

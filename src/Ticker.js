@@ -101,7 +101,7 @@ class Ticker extends React.Component<Props, State> {
     this.setState({ percent });
   };
 
-  interval: ?NodeJS.Timer;
+  interval: ?Interval;
 
   handleProps = (props: Props) => {
     const { autoIncrement, percent, intervalTime } = props;
@@ -121,7 +121,7 @@ class Ticker extends React.Component<Props, State> {
     }
   };
 
-  timeout: ?NodeJS.Timer;
+  timeout: ?Timeout;
 
   render() {
     return this.props.renderProgress(this.state.percent);

@@ -101,9 +101,7 @@ class ProgressBarProvider extends React.PureComponent<Props, State> {
 
   render() {
     return (
-      <Progress isActive={this.props.isActive}>
-        {this.renderProgress}
-      </Progress>
+      <Progress isActive={this.props.isActive}>{this.renderProgress}</Progress>
     );
   }
 }

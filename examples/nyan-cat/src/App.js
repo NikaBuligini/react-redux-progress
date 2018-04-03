@@ -5,12 +5,23 @@ import Progress from '../../../index';
 import Intro from './intro.ogg';
 import Loop from './loop.ogg';
 import Cat from './Cat';
+import RainbowColor from './RainbowColor';
 
 const Wrapper = styled.div`
   .trigger-button-container {
     text-align: center;
     width: 100%;
     padding: 20px 0;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 48px;
+
+    a {
+      margin: 0 6px;
+      color: lightslategray;
+    }
   }
 `;
 
@@ -53,10 +64,6 @@ const ProgressContainer = styled.div`
     height: 3px;
   }
 `;
-
-const RainbowColor = ({ color }) => (
-  <div className="color" style={{ backgroundColor: color }} />
-);
 
 const ProgressPercent = styled.div`
   width: ${props => props.width};
@@ -150,9 +157,6 @@ class App extends React.Component {
 
     return (
       <Wrapper>
-        <Progress isActive={isProgressActive}>
-          {percent => <NyanProgress percent={percent} />}
-        </Progress>
         <audio ref={this.saveIntroRef} src={Intro} preload={1} />
         <audio ref={this.saveLoopRef} src={Loop} preload={1} loop={1} />
         <div className="trigger-button-container">
@@ -167,6 +171,17 @@ class App extends React.Component {
           >
             {this.renderButtonText(state, isProgressActive)}
           </TriggerButton>
+        </div>
+        <Progress isActive={isProgressActive}>
+          {percent => <NyanProgress percent={percent} />}
+        </Progress>
+        <div className="footer">
+          <a href="https://github.com/NikaBuligini" target="_blank">
+            GitHub
+          </a>
+          <a href="https://twitter.com/buligini" target="_blank">
+            Twitter
+          </a>
         </div>
       </Wrapper>
     );
