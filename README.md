@@ -3,7 +3,10 @@ Progress bar for React and Redux applications
 
 ![](https://media.giphy.com/media/26u48f9ry3CH9D9Vm/giphy.gif)
 
-[Demo](http://react-redux-progress.surge.sh/)
+## Demo
+
+- [sample](http://react-redux-progress.surge.sh/)
+- [nyan-cat-progress](http://nyan-cat-progress-demo.surge.sh/)
 
 ## Installation
 
@@ -21,10 +24,10 @@ $ yarn add react-redux-progress
 
 ```js
 // using ES6 modules
-import ProgressBar from 'react-redux-progress';
+import Progress, { ProgressBarProvider, reducer } from 'react-redux-progress';
 
 // using CommonJS modules
-var ProgressBar = require('react-redux-progress');
+var Progress, { ProgressBarProvider, reducer } = require('react-redux-progress');
 ```
 The UMD build is also available on [unpkg](https://unpkg.com):
 
@@ -36,16 +39,33 @@ You can find the library on `window.ReactReduxProgress`.
 
 ## Usage
 
+### Custom Progress
+
 ```js
-import ProgressBar from 'react-redux-progress';
+import Progress from 'react-redux-progress';
+
+// give percent any shape you want
+const MyProgress = ({ isProgressActive }) => (
+  <Progress isActive={isProgressActive}>
+    {percent => <div>{`${percent}%`}</div>}
+  </Progress>
+);
+
+export default MyProgress;
+```
+
+### Simple usage with prepared component
+
+```js
+import { ProgressBarProvider } from 'react-redux-progress';
 
 // default color is #77b6ff
 const Layout = ({ isProgressActive, children }) => (
   <div>
-    <ProgressBar isActive={isProgressActive} color="#db7093" />
+    <ProgressBarProvider isActive={isProgressActive} color="#db7093" />
     {children}
   </div>
-)
+);
 ```
 
 You can store isProgressActive variable in redux store and control it with your actions
@@ -65,12 +85,12 @@ export default rootReducers;
 Get progress status
 
 ```js
-import ProgressBar from 'react-redux-progress';
+import { ProgressBarProvider } from 'react-redux-progress';
 import { connect } from 'react-redux';
 
 const Layout = ({ isProgressActive, children }) => (
   <div>
-    <ProgressBar isActive={isProgressActive} />
+    <ProgressBarProvider isActive={isProgressActive} />
     {children}
   </div>
 );

@@ -1,0 +1,29 @@
+{
+  "name": "progress-bar-nyan-cat-demo",
+  "version": "1.0.0",
+  "main": "n/a",
+  "author": "Nikoloz Buligini",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "start:dev": "webpack-dev-server"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-motion": "^0.5.2",
+    "styled-components": "^3.2.3",
+    "webpack": "^4.2.0"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "file-loader": "^1.1.11",
+    "svg-inline-loader": "^0.8.0",
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-server": "^3.1.1"
+  }
+}

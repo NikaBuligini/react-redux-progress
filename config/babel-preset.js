@@ -1,5 +1,5 @@
-const BABEL_ENV = process.env.BABEL_ENV;
-const building = BABEL_ENV != undefined && BABEL_ENV !== 'cjs';
+const { BABEL_ENV } = process.env;
+const building = BABEL_ENV !== undefined && BABEL_ENV !== 'cjs';
 const transformImports = require('babel-plugin-transform-imports');
 
 const plugins = [[transformImports]];
@@ -25,5 +25,5 @@ module.exports = {
     'react',
     'flow',
   ],
-  plugins: plugins,
+  plugins,
 };

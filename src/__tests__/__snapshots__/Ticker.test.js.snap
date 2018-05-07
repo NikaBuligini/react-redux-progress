@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Ticker /> should initially render empty progress 1`] = `null`;
+
+exports[`<Ticker /> should initially render progress html 1`] = `
+<div>
+  Progress 
+  -1
+</div>
+`;

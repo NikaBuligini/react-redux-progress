@@ -6,9 +6,11 @@ import resolve from 'rollup-plugin-node-resolve';
 
 const config = {
   input: 'src/index.js',
-  name: 'ReactReduxProgress',
-  globals: {
-    react: 'React',
+  output: {
+    name: 'ReactReduxProgress',
+    globals: {
+      react: 'React',
+    },
   },
   external: ['react'],
   plugins: [
