@@ -1,6 +1,6 @@
 {
   "name": "react-redux-progress",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Progress bar for React and Redux applications",
   "repository": "https://github.com/NikaBuligini/react-redux-progress",
   "author": "Nikoloz Buligini",
