@@ -24,7 +24,7 @@ describe('<Ticker />', () => {
 
   it('should initially render progress html', () => {
     const component = renderer.create(
-      <Ticker renderProgress={percent => <div>Progress {percent}</div>} />,
+      <Ticker renderProgress={percent => <div>{`Progress ${percent}`}</div>} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

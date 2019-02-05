@@ -16,7 +16,6 @@ exports[`<ProgressBarProvier /> should render <ProgressBar /> 1`] = `
   }
 >
   <div
-    className={undefined}
     style={
       Object {
         "background": "#77b6ff",
@@ -78,7 +77,6 @@ exports[`<ProgressBarProvier /> should render progress bar with color hex 1`] = 
   }
 >
   <div
-    className={undefined}
     style={
       Object {
         "background": "#db7093",
@@ -109,7 +107,6 @@ exports[`<ProgressBarProvier /> should render progress bar with color name 1`] =
   }
 >
   <div
-    className={undefined}
     style={
       Object {
         "background": "#ff0000",
@@ -140,7 +137,6 @@ exports[`<ProgressBarProvier /> should render progress bar with styles 1`] = `
   }
 >
   <div
-    className={undefined}
     style={
       Object {
         "background": "#77b6ff",

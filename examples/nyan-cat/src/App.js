@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Motion, spring } from 'react-motion';
+import { Spring } from 'react-spring';
 import Progress from '../../../index';
 import Intro from './intro.ogg';
 import Loop from './loop.ogg';
@@ -77,10 +77,7 @@ const NyanProgress = ({ percent }) => {
 
   return (
     <ProgressContainer isHidden={isHidden}>
-      <Motion
-        defaultStyle={{ x: 0, iteration: 0 }}
-        style={{ x: spring(width), iteration: spring(5) }}
-      >
+      <Spring from={{ x: 0, iteration: 0 }} to={{ x: width, iteration: 5 }}>
         {value => (
           <div style={{ width: `${value.x}%`, opacity, position: 'relative' }}>
             <RainbowColor color="#fc0000" />
@@ -92,7 +89,7 @@ const NyanProgress = ({ percent }) => {
             <Cat isHidden={isHidden} width={width} opacity={opacity} />
           </div>
         )}
-      </Motion>
+      </Spring>
     </ProgressContainer>
   );
 };

@@ -62,5 +62,6 @@ es
 node_modules
 umd
 /*.js
+!babel.config.js
 !rollup.config.js
 dist

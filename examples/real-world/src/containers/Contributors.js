@@ -81,6 +81,9 @@ class Cotributors extends React.Component {
   }
 }
 
-export default connect(state => getContributors(state, OWNER, REPO), {
-  loadContributors,
-})(Cotributors);
+export default connect(
+  state => getContributors(state, OWNER, REPO),
+  {
+    loadContributors,
+  },
+)(Cotributors);
