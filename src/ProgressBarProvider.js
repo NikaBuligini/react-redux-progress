@@ -1,7 +1,8 @@
 // @flow
 
 import React from 'react';
-import Progress from './Progress';
+
+import useProgress, { usePrevious } from './useProgress';
 import { nameToHex, hexToRgb } from './hexToRgb';
 
 const DEFAULT_COLOR = '#77b6ff';
@@ -12,10 +13,6 @@ type Props = {
   className?: string,
   styles?: Object,
   absolute?: boolean,
-};
-
-type State = {
-  color: string,
 };
 
 const styles = {
@@ -59,7 +56,7 @@ function getPercentStyles(
   clientStyles: Object = {},
 ) {
   const customStyles = {
-    width: percent <= 0 ? '0' : `${percent}%`,
+    width: percent <= 0 ? '0%' : `${percent}%`,
     opacity: percent >= 99.9 ? '0' : '1',
   };
 
@@ -72,38 +69,50 @@ function getPercentStyles(
   };
 }
 
-class ProgressBarProvider extends React.PureComponent<Props, State> {
-  static displayName = 'ProgressBarProvider';
+const ProgressBarProvider = ({
+  isActive,
+  color,
+  absolute,
+  className,
+  styles,
+  children,
+}: Props) => {
+  const [progressColor, setProgressColor] = React.useState(() =>
+    nameToHex(color, DEFAULT_COLOR),
+  );
 
-  static defaultProps = {
-    absolute: false,
-    color: DEFAULT_COLOR,
-  };
+  const [iterationKey, setIteration] = React.useState(0);
 
-  state = {
-    color: nameToHex(this.props.color, DEFAULT_COLOR),
-  };
+  const prevIsActive = usePrevious(isActive);
 
-  renderProgress = (percent: number) => {
-    // Hide progress bar if percent is less than 0.
-    const isHidden = percent < 0 || percent >= 100;
+  React.useEffect(() => {
+    if (isActive && !prevIsActive) {
+      setIteration(prevIteration => prevIteration + 1);
+    }
+  }, [isActive]);
 
-    // Set `state.percent` as width.
-    return (
-      <div style={getWrapperStyles(isHidden, this.props.absolute)}>
-        <div
-          className={this.props.className}
-          style={getPercentStyles(this.state.color, percent, this.props.styles)}
-        />
-      </div>
-    );
-  };
+  const percent = useProgress(isActive);
 
-  render() {
-    return (
-      <Progress isActive={this.props.isActive}>{this.renderProgress}</Progress>
-    );
-  }
-}
+  // Hide progress bar if percent is less than 0.
+  const isHidden = percent < 0 || percent > 100;
+
+  // Set `state.percent` as width.
+  return (
+    <div key={iterationKey} style={getWrapperStyles(isHidden, absolute)}>
+      <div
+        className={className}
+        style={getPercentStyles(progressColor, percent, styles)}
+      />
+    </div>
+  );
+};
+
+ProgressBarProvider.displayName = 'ProgressBarProvider';
+
+ProgressBarProvider.defaultProps = {
+  absolute: false,
+  color: DEFAULT_COLOR,
+  styles: {},
+};
 
 export default ProgressBarProvider;

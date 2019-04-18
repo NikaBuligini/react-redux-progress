@@ -23,7 +23,7 @@ exports[`<ProgressBarProvier /> should render <ProgressBar /> 1`] = `
         "height": "2px",
         "opacity": "1",
         "transition": "all 400ms ease",
-        "width": "0",
+        "width": "0%",
       }
     }
   />
@@ -54,7 +54,7 @@ exports[`<ProgressBarProvier /> should render progress bar with className 1`] = 
         "height": "2px",
         "opacity": "1",
         "transition": "all 400ms ease",
-        "width": "0",
+        "width": "0%",
       }
     }
   />
@@ -84,7 +84,7 @@ exports[`<ProgressBarProvier /> should render progress bar with color hex 1`] = 
         "height": "2px",
         "opacity": "1",
         "transition": "all 400ms ease",
-        "width": "0",
+        "width": "0%",
       }
     }
   />
@@ -114,7 +114,7 @@ exports[`<ProgressBarProvier /> should render progress bar with color name 1`] =
         "height": "2px",
         "opacity": "1",
         "transition": "all 400ms ease",
-        "width": "0",
+        "width": "0%",
       }
     }
   />
@@ -144,7 +144,7 @@ exports[`<ProgressBarProvier /> should render progress bar with styles 1`] = `
         "height": "5px",
         "opacity": "1",
         "transition": "all 400ms ease",
-        "width": "0",
+        "width": "0%",
       }
     }
   />

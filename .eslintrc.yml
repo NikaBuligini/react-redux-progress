@@ -1,46 +1,4 @@
 root: true
 
-env:
-  node: true
-  jest: true
-
-parser: babel-eslint
-
 extends:
-  - airbnb
-  - prettier
-  - plugin:flowtype/recommended
-
-plugins:
-  - react
-  - jsx-a11y
-  - import
-  - flowtype
-  - prettier
-
-rules:
-  react/jsx-filename-extension: [1, { "extensions": [".js", ".jsx"] }]
-  import/no-extraneous-dependencies: ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}]
-  no-underscore-dangle: ["error", { "allow": ["_id"] }]
-  linebreak-style: [0, "unix"]
-  react/forbid-prop-types: [0] #temp
-  jsx-a11y/no-static-element-interactions: [0]
-  jsx-a11y/click-events-have-key-events: [0]
-  jsx-a11y/anchor-is-valid: [0]
-  arrow-parens: [0]
-  react/jsx-wrap-multilines: [0]
-  react/no-array-index-key: [0]
-  react/prop-types: [0]
-  no-confusing-arrow: [0]
-  prettier/prettier: "error"
-  import/no-named-as-default: [0]
-
-settings:
-  flowtype:
-    onlyFilesWithFlowAnnotation: true
-
-globals:
-  window: true
-  fetch: true
-  document: true
-  navigator: true
+  - nb

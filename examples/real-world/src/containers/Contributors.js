@@ -46,44 +46,40 @@ const ContributorList = ({ isFetching, contributors, onReload }) => {
   );
 };
 
-class Cotributors extends React.Component {
-  componentDidMount() {
-    this.loadContributors();
-  }
+const Contributors = props => {
+  const loadData = React.useCallback(
+    (force = false) => props.loadContributors(OWNER, REPO, force),
+    [props.loadContributors],
+  );
 
-  handleReload = event => {
-    event.preventDefault();
+  React.useEffect(() => {
+    loadData();
+  }, []);
 
-    this.loadContributors(true);
-  };
+  const { isFetching, isLoaded, contributors } = props;
 
-  loadContributors = (force = false) => {
-    this.props.loadContributors(OWNER, REPO, force);
-  };
-
-  render() {
-    const { isFetching, contributors } = this.props;
-
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12">
-            <h4>{`${OWNER}/${REPO}`}'s contributors:</h4>
-            <ContributorList
-              isFetching={isFetching}
-              contributors={contributors}
-              onReload={this.handleReload}
-            />
-          </div>
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12">
+          <h4>{`${OWNER}/${REPO}'s contributors:`}</h4>
+          <ContributorList
+            isFetching={isFetching || !isLoaded}
+            contributors={contributors}
+            onReload={event => {
+              event.preventDefault();
+              loadData(true);
+            }}
+          />
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default connect(
   state => getContributors(state, OWNER, REPO),
   {
     loadContributors,
   },
-)(Cotributors);
+)(Contributors);

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import ProgressBar from '../../../ProgressBarProvider';
+import { ProgressBarProvider as ProgressBar } from 'react-redux-progress';
+
+import useTimeout from './useTimeout';
 
 const Wrapper = styled.div`
   margin-top: 40px;
@@ -48,51 +50,24 @@ function Button({ onClick, children, isProgressActive }) {
   );
 }
 
-class NestedCard extends React.PureComponent {
-  state = {
-    isActive: false,
-  };
+const NestedCard = () => {
+  const [isActive, setActive] = React.useState(false);
 
-  handleStartProgress = () => {
-    this.setState({ isActive: true }, () => {
-      setTimeout(this.handleStopProgress, 5000);
-    });
-  };
+  useTimeout(() => setActive(false), isActive ? 5000 : null);
 
-  handleStopProgress = () => {
-    this.setState({ isActive: false });
-  };
-
-  render() {
-    const { isActive: isProgressActive } = this.state;
-
-    return (
-      <Wrapper>
-        <Card>
-          <ProgressBar
-            isActive={isProgressActive}
-            color="palevioletred"
-            absolute
-          />
-          {isProgressActive ? (
-            <Button
-              onClick={this.handleStopProgress}
-              isProgressActive={isProgressActive}
-            >
-              Stop
-            </Button>
-          ) : (
-            <Button
-              onClick={this.handleStartProgress}
-              isProgressActive={isProgressActive}
-            >
-              Start
-            </Button>
-          )}
-        </Card>
-      </Wrapper>
-    );
-  }
-}
+  return (
+    <Wrapper>
+      <Card>
+        <ProgressBar isActive={isActive} color="palevioletred" absolute />
+        <Button
+          onClick={() => setActive(wasActive => !wasActive)}
+          isProgressActive={isActive}
+        >
+          {isActive ? 'Stop' : 'Start'}
+        </Button>
+      </Card>
+    </Wrapper>
+  );
+};
 
 export default NestedCard;

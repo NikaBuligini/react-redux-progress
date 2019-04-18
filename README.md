@@ -42,16 +42,26 @@ You can find the library on `window.ReactReduxProgress`.
 ### Custom Progress
 
 ```js
-import Progress from 'react-redux-progress';
+import { useProgress } from 'react-redux-progress';
 
 // give percent any shape you want
-const MyProgress = ({ isProgressActive }) => (
-  <Progress isActive={isProgressActive}>
+const MyProgress = ({ isActive }) => {
+  const percent = useProgress(isActive);
+
+  return <div>{`${percent}%`}</div>;
+};
+```
+
+### RenderProps
+
+```js
+import Progress from 'react-redux-progress/renderprops';
+
+const MyProgress = ({ isActive }) => (
+  <Progress isActive={isActive}>
     {percent => <div>{`${percent}%`}</div>}
   </Progress>
 );
-
-export default MyProgress;
 ```
 
 ### Simple usage with prepared component
@@ -104,12 +114,12 @@ Async action
 
 ```js
 const startAction = (progressId) => ({
-  type: 'START_ASYNC_ACTION',
+  type: 'START_ASYNC_ACTION', // your action name
   progressId,
 });
 
 const stopAction = (progressId) => ({
-  type: 'STOP_ASYNC_ACTION',
+  type: 'STOP_ASYNC_ACTION', // your action name
   progressId,
 });
 
@@ -127,16 +137,23 @@ export function startAsyncAction() {
 }
 ```
 
+## Prop Types for useProgress(isActive: boolean, options? = {}) hook
+|   Property   |   Type   | Required? | Default |              Description              |
+| :----------: | :------: | :-------: | :-----: | :-----------------------------------: |
+|  maxPercent  | Integer  |           |  `85`   |          Progress stop point          |
+| intervalTime | Integer  |           |  `450`  |     Update interval milliseconds      |
+|  increment   | Function |           |         | Default incrementor (based on random) |
+
 Checkout examples/real-world for more
 
-## Prop Types
-| Property | Type | Required? | Default | Description |
-|:---|:---|:---:|:---:|:---|
-| isActive | Boolean | ✓ |  | Progress activation flag |
-| color | String |   | `#77b6ff` | Custom color for progress bar percent |
-| className | String |  |  | Optional custom CSS class name to attach to root `Percent` element. |
-| styles | Object |  |  | Optional custom CSS styles to attach to root `Percent` element. |
-| absolute | Boolean |  | `false` | Position property for `Percent` |
+## Prop Types for ProgressBarProvider
+| Property  | Type    | Required? |  Default  | Description                                                         |
+| :-------- | :------ | :-------: | :-------: | :------------------------------------------------------------------ |
+| isActive  | Boolean |     ✓     |           | Progress activation flag                                            |
+| color     | String  |           | `#77b6ff` | Custom color for progress bar percent                               |
+| className | String  |           |           | Optional custom CSS class name to attach to root `Percent` element. |
+| styles    | Object  |           |           | Optional custom CSS styles to attach to root `Percent` element.     |
+| absolute  | Boolean |           |  `false`  | Position property for `Percent`                                     |
 
 ## Contributions
 

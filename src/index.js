@@ -1,7 +1,5 @@
-import Progress from './Progress';
+import useProgress from './useProgress';
 import ProgressBarProvider from './ProgressBarProvider';
 import reducer from './reducer';
 
-export { reducer, ProgressBarProvider };
-
-export default Progress;
+export { useProgress, reducer, ProgressBarProvider };

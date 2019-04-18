@@ -25,26 +25,30 @@ const Avatar = styled.a`
   }
 `;
 
+const Link = ({ to, text }) => (
+  <a href={to} target="_blank" rel="noopener noreferrer">
+    {text}
+  </a>
+);
+
 const Contributor = contributor => (
   <Wrapper>
-    <Avatar href={contributor.htmlUrl} target="_blank">
+    <Avatar
+      href={contributor.htmlUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <img src={contributor.avatarUrl} alt={contributor.login} />
     </Avatar>
     <div className="info">
-      <a href={contributor.htmlUrl} target="_blank">
+      <a href={contributor.htmlUrl} target="_blank" rel="noopener noreferrer">
         {contributor.login}
       </a>
       <p>Contributions: +{contributor.contributions}</p>
       <div className="links">
-        <a href={contributor.reposUrl} target="_blank">
-          Repositories
-        </a>
-        <a href={contributor.followersUrl} target="_blank">
-          Followers
-        </a>
-        <a href={contributor.organizationsUrl} target="_blank">
-          Organizations
-        </a>
+        <Link to={contributor.reposUrl} text="Repositories" />
+        <Link to={contributor.followersUrl} text="Followers" />
+        <Link to={contributor.organizationsUrl} text="Organizations" />
       </div>
     </div>
   </Wrapper>

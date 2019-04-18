@@ -1,4 +1,6 @@
 import React from 'react';
+import { useInterval } from 'react-redux-progress/useProgress';
+
 import Nyan1 from './nyan1.svg';
 import Nyan2 from './nyan2.svg';
 import Nyan3 from './nyan3.svg';
@@ -8,64 +10,21 @@ import Nyan6 from './nyan6.svg';
 
 const cats = [Nyan1, Nyan2, Nyan3, Nyan4, Nyan5, Nyan6];
 
-class Cat extends React.PureComponent {
-  state = {
-    iteration: 0,
-  };
+const Cat = () => {
+  const [iteration, setIteration] = React.useState(0);
 
-  interval = null;
+  const handleIteration = React.useCallback(() => {
+    setIteration(prevIteration => (prevIteration >= 5 ? 0 : prevIteration + 1));
+  }, []);
 
-  componentDidMount() {
-    this.start(this.props);
-  }
+  useInterval(handleIteration, 100);
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.isHidden && !nextProps.isHidden) {
-      this.start(nextProps);
-    } else if (!this.props.isHidden && nextProps.isHidden) {
-      this.stop();
-    }
-  }
-
-  start = props => {
-    if (!this.interval && !props.isHidden) {
-      this.interval = setInterval(() => {
-        const { iteration } = this.state;
-        const nextIteration = iteration >= 5 ? 0 : iteration + 1;
-        this.setState({ iteration: nextIteration });
-      }, 100);
-    }
-  };
-
-  stop = () => {
-    if (this.interval) {
-      clearInterval(this.interval);
-      this.interval = null;
-    }
-  };
-
-  componentWillUnmount() {
-    this.stop();
-  }
-
-  render() {
-    const { width, opacity } = this.props;
-    const { iteration } = this.state;
-
-    return (
-      <span
-        dangerouslySetInnerHTML={{ __html: cats[iteration] }}
-        style={{
-          position: 'absolute',
-          visibility: width > 0 ? 'visible' : 'hidden',
-          width: '40px',
-          top: '-2px',
-          right: '-20px',
-          opacity,
-        }}
-      />
-    );
-  }
-}
+  return (
+    <span
+      className="cat"
+      dangerouslySetInnerHTML={{ __html: cats[iteration] }}
+    />
+  );
+};
 
 export default Cat;

@@ -1,7 +1,8 @@
 import React from 'react';
-import ProgressBar from '../../../ProgressBarProvider';
+import { ProgressBarProvider as ProgressBar } from 'react-redux-progress';
 
 import NestedCard from './NestedCard';
+import useTimeout from './useTimeout';
 
 function Button({ onClick, children, isProgressActive }) {
   const color = isProgressActive ? 'cornflowerblue' : 'palevioletred';
@@ -29,54 +30,31 @@ function Button({ onClick, children, isProgressActive }) {
   );
 }
 
-class App extends React.Component {
-  state = {
-    isActive: false,
-  };
+const App = () => {
+  const [isActive, setActive] = React.useState(false);
 
-  handleStartProgress = () => {
-    this.setState({ isActive: true }, () => {
-      setTimeout(this.handleStopProgress, 5000);
-    });
-  };
+  useTimeout(() => setActive(false), isActive ? 5000 : null);
 
-  handleStopProgress = () => {
-    this.setState({ isActive: false });
-  };
-
-  render() {
-    const { isActive: isProgressActive } = this.state;
-
-    return (
-      <div>
-        <ProgressBar isActive={isProgressActive} />
-        <div
-          style={{
-            textAlign: 'center',
-            width: '100%',
-            padding: '20px 0',
-          }}
+  return (
+    <div>
+      <ProgressBar isActive={isActive} />
+      <div
+        style={{
+          textAlign: 'center',
+          width: '100%',
+          padding: '20px 0',
+        }}
+      >
+        <Button
+          onClick={() => setActive(wasActive => !wasActive)}
+          isProgressActive={isActive}
         >
-          {isProgressActive ? (
-            <Button
-              onClick={this.handleStopProgress}
-              isProgressActive={isProgressActive}
-            >
-              Stop
-            </Button>
-          ) : (
-            <Button
-              onClick={this.handleStartProgress}
-              isProgressActive={isProgressActive}
-            >
-              Start
-            </Button>
-          )}
-        </div>
-        <NestedCard />
+          {isActive ? 'Stop' : 'Start'}
+        </Button>
       </div>
-    );
-  }
-}
+      <NestedCard />
+    </div>
+  );
+};
 
 export default App;

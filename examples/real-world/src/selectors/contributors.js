@@ -10,9 +10,10 @@ export function getContributors(state, owner, repo) {
   const fetchStatus = state.fetch.contributorsByRepo[key];
 
   if (fetchStatus) {
-    const { isFetching, ids } = fetchStatus;
+    const { isFetching, loadedAt, ids } = fetchStatus;
     return {
       isFetching,
+      isLoaded: !!loadedAt,
       contributors: mapIdsToUsers(state, ids),
     };
   }

@@ -9,7 +9,7 @@ module.exports = {
     publicPath: '/',
   },
   devtool: 'cheap-module-source-map',
-  mode: 'production',
+  mode: 'development',
   module: {
     rules: [
       {
