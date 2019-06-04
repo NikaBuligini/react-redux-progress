@@ -13,6 +13,7 @@ type Props = {
   className?: string,
   styles?: Object,
   absolute?: boolean,
+  children: any,
 };
 
 const styles = {
