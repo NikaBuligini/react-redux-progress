@@ -12,17 +12,17 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-redux-progress": "^2.0.0-beta.1",
-    "react-spring": "^8.0.19",
-    "styled-components": "^4.2.0",
-    "webpack": "^4.30.0"
+    "react-redux-progress": "^2.0.0",
+    "react-spring": "^8.0.20",
+    "styled-components": "^4.2.1",
+    "webpack": "^4.32.2"
   },
   "devDependencies": {
-    "babel-loader": "^8.0.5",
-    "babel-preset-nb": "^1.0.6",
+    "babel-loader": "^8.0.6",
+    "babel-preset-nb": "^1.0.8",
     "file-loader": "^3.0.1",
     "svg-inline-loader": "^0.8.0",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.3.1"
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.5.1"
   }
 }
