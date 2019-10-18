@@ -3927,10 +3927,10 @@ react-is@^16.9.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.10.2.tgz#984120fd4d16800e9a738208ab1fba422d23b5ab"
   integrity sha512-INBT1QEgtcCCgvccr5/86CfD71fw9EPmDxgiJX4I2Ddr6ZsV6iFXsuby+qWJPtmNuMY0zByTsG4468P7nHuNWA==
 
-react-redux-progress@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-redux-progress/-/react-redux-progress-2.1.0.tgz#63601f3c7c8dd09c00df79737e18828ccf48dc5e"
-  integrity sha512-6B7KDS2+FPy/vs//ry5iByu9Z3oCVLFEVKktYtKojcruJJrrk+aZBNHJnl27tf4cp90RwOCf4vy0DfubPRZx7g==
+react-redux-progress@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-redux-progress/-/react-redux-progress-2.1.1.tgz#45498176b8f419884dd166e1161d15e36e30af3d"
+  integrity sha512-LtgUp9fBDewcVhvNdMZfjlCvIploQjFj2MGf8/ocMp3JDijaWCCmNdgan7UeiYYycVeQQoF9mtpjoSeg1b/4Cg==
 
 react-redux@^7.1.1:
   version "7.1.1"

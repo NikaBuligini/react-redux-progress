@@ -11,7 +11,7 @@
     "@babel/polyfill": "^7.6.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-redux-progress": "^2.1.0",
+    "react-redux-progress": "^2.1.1",
     "styled-components": "^4.4.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9"

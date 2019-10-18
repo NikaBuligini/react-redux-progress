@@ -17,7 +17,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.1",
-    "react-redux-progress": "^2.1.0",
+    "react-redux-progress": "^2.1.1",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "regenerator-runtime": "^0.13.3",
