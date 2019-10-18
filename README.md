@@ -24,10 +24,10 @@ $ yarn add react-redux-progress
 
 ```js
 // using ES6 modules
-import Progress, { ProgressBarProvider, reducer } from 'react-redux-progress';
+import { useProgress } from 'react-redux-progress';
 
 // using CommonJS modules
-var Progress, { ProgressBarProvider, reducer } = require('react-redux-progress');
+var { useProgress } = require('react-redux-progress');
 ```
 The UMD build is also available on [unpkg](https://unpkg.com):
 
