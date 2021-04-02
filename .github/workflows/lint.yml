@@ -2,7 +2,7 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
@@ -32,7 +32,7 @@ jobs:
         with:
           path: "."
           key: ${{ github.sha }}
-          
+
   lint:
     runs-on: ubuntu-latest
     needs: build
@@ -42,7 +42,7 @@ jobs:
         with:
           path: "."
           key: ${{ github.sha }}
-      - run: yarn eslint:ci
+      - run: yarn lint:ci
 
   test:
     runs-on: ubuntu-latest
