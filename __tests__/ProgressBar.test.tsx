@@ -1,41 +1,36 @@
 import React from 'react';
-import sinon from 'sinon';
 import renderer from 'react-test-renderer';
 
-import ProgressBarProvier from '../ProgressBarProvider';
+import { ProgressBarProvider } from '../src/ProgressBarProvider';
 
-let clock = null;
+jest.useFakeTimers();
 
-describe('<ProgressBarProvier />', () => {
-  beforeEach(() => {
-    clock = sinon.useFakeTimers();
-  });
-
-  afterEach(() => {
-    clock.restore();
-  });
-
+describe('<ProgressBarProvider />', () => {
   it('should render <ProgressBar />', () => {
-    const component = renderer.create(<ProgressBarProvier />);
+    const component = renderer.create(<ProgressBarProvider isActive={false} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('should render progress bar with color name', () => {
-    const component = renderer.create(<ProgressBarProvier color="red" />);
+    const component = renderer.create(
+      <ProgressBarProvider isActive={false} color="red" />
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('should render progress bar with color hex', () => {
-    const component = renderer.create(<ProgressBarProvier color="#db7093" />);
+    const component = renderer.create(
+      <ProgressBarProvider isActive={false} color="#db7093" />
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('should render progress bar with styles', () => {
     const component = renderer.create(
-      <ProgressBarProvier styles={{ height: '5px' }} />,
+      <ProgressBarProvider isActive={false} styles={{ height: '5px' }} />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -43,7 +38,7 @@ describe('<ProgressBarProvier />', () => {
 
   it('should render progress bar with className', () => {
     const component = renderer.create(
-      <ProgressBarProvier className="my-custom-classname" />,
+      <ProgressBarProvider isActive={false} className="my-custom-classname" />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

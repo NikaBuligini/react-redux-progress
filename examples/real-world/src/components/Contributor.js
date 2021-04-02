@@ -31,7 +31,7 @@ const Link = ({ to, text }) => (
   </a>
 );
 
-const Contributor = contributor => (
+const Contributor = (contributor) => (
   <Wrapper>
     <Avatar
       href={contributor.htmlUrl}

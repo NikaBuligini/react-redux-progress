@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 import { useProgress } from 'react-redux-progress';
 
-import Cat from './Cat';
-import RainbowColor from './RainbowColor';
+import { Cat } from './Cat';
+
+const RainbowColor = memo(({ color }) => {
+  return <div className="color" style={{ backgroundColor: color }} />;
+});
 
 const ProgressContainer = styled.div`
   top: 0;

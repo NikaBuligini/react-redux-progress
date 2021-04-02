@@ -60,7 +60,7 @@ const NestedCard = () => {
       <Card>
         <ProgressBar isActive={isActive} color="palevioletred" absolute />
         <Button
-          onClick={() => setActive(wasActive => !wasActive)}
+          onClick={() => setActive((wasActive) => !wasActive)}
           isProgressActive={isActive}
         >
           {isActive ? 'Stop' : 'Start'}

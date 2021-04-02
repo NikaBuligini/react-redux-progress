@@ -1,37 +1,34 @@
-// @flow
+import { useEffect, useState, createElement, CSSProperties } from 'react';
 
-import React from 'react';
-
-import useProgress, { usePrevious } from './useProgress';
+import { useProgress, usePrevious } from './useProgress';
 import { nameToHex, hexToRgb } from './hexToRgb';
 
 const DEFAULT_COLOR = '#77b6ff';
 
 type Props = {
-  isActive: boolean,
-  color: string,
-  className?: string,
-  styles?: Object,
-  absolute?: boolean,
-  children: any,
+  isActive: boolean;
+  color?: string;
+  className?: string;
+  styles?: CSSProperties;
+  absolute?: boolean;
 };
 
-const styles = {
+const styles: Record<string, CSSProperties> = {
   wrapper: {
-    top: '0',
-    left: '0',
+    top: 0,
+    left: 0,
     width: '100%',
     transition: 'all 500mx ease-in-out',
   },
   hiddenWrapper: {
     visibility: 'hidden',
-    opacity: '0',
-    zIndex: '-10',
+    opacity: 0,
+    zIndex: -10,
   },
   visibleWrapper: {
     visibility: 'visible',
-    opacity: '1',
-    zIndex: '9999',
+    opacity: 1,
+    zIndex: 9999,
   },
   percent: {
     transition: 'all 400ms ease',
@@ -39,7 +36,10 @@ const styles = {
   },
 };
 
-function getWrapperStyles(isHidden: boolean, isAbsolute: ?boolean = false) {
+function getWrapperStyles(
+  isHidden: boolean,
+  isAbsolute: boolean = false
+): CSSProperties {
   const visibilityStyles = isHidden
     ? styles.hiddenWrapper
     : styles.visibleWrapper;
@@ -54,8 +54,8 @@ function getWrapperStyles(isHidden: boolean, isAbsolute: ?boolean = false) {
 function getPercentStyles(
   color: string,
   percent: number,
-  clientStyles: Object = {},
-) {
+  clientStyles: Object = {}
+): CSSProperties {
   const customStyles = {
     width: percent <= 0 ? '0%' : `${percent}%`,
     opacity: percent >= 99.9 ? '0' : '1',
@@ -70,27 +70,24 @@ function getPercentStyles(
   };
 }
 
-const ProgressBarProvider = ({
+export const ProgressBarProvider = ({
   isActive,
-  color,
-  absolute,
+  color = DEFAULT_COLOR,
+  absolute = false,
   className,
-  styles,
-  children,
+  styles = {},
 }: Props) => {
-  const [progressColor, setProgressColor] = React.useState(() =>
-    nameToHex(color, DEFAULT_COLOR),
-  );
+  const progressColor = nameToHex(color) ?? DEFAULT_COLOR;
 
-  const [iterationKey, setIteration] = React.useState(0);
+  const [iterationKey, setIteration] = useState(0);
 
   const prevIsActive = usePrevious(isActive);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isActive && !prevIsActive) {
-      setIteration(prevIteration => prevIteration + 1);
+      setIteration((prevIteration) => prevIteration + 1);
     }
-  }, [isActive]);
+  }, [isActive]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const percent = useProgress(isActive);
 
@@ -98,22 +95,17 @@ const ProgressBarProvider = ({
   const isHidden = percent < 0 || percent > 100;
 
   // Set `state.percent` as width.
-  return (
-    <div key={iterationKey} style={getWrapperStyles(isHidden, absolute)}>
-      <div
-        className={className}
-        style={getPercentStyles(progressColor, percent, styles)}
-      />
-    </div>
+  return createElement(
+    'div',
+    {
+      key: iterationKey,
+      style: getWrapperStyles(isHidden, absolute),
+    },
+    createElement('div', {
+      className,
+      style: getPercentStyles(progressColor, percent, styles),
+    })
   );
 };
 
 ProgressBarProvider.displayName = 'ProgressBarProvider';
-
-ProgressBarProvider.defaultProps = {
-  absolute: false,
-  color: DEFAULT_COLOR,
-  styles: {},
-};
-
-export default ProgressBarProvider;

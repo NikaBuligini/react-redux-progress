@@ -1,38 +1,82 @@
-import babel from 'rollup-plugin-babel';
-import { uglify } from 'rollup-plugin-uglify';
-import replace from 'rollup-plugin-replace';
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
+import path from 'path';
+import babel from '@rollup/plugin-babel';
+import resolve from '@rollup/plugin-node-resolve';
+import typescript from '@rollup/plugin-typescript';
+import esbuild from 'rollup-plugin-esbuild';
+import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 
-const config = {
-  input: 'src/index.js',
-  output: {
-    name: 'ReactReduxProgress',
-    globals: {
-      react: 'React',
-    },
-  },
-  external: ['react'],
-  plugins: [
-    babel({
-      exclude: 'node_modules/**',
-    }),
-    resolve({
-      customResolveOptions: {
-        moduleDirectory: 'node_modules',
-      },
-    }),
-    commonjs({
-      include: /node_modules/,
-    }),
-    replace({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    }),
-  ],
-};
+const createBabelConfig = require('./babel.config');
+const { root } = path.parse(process.cwd());
+const extensions = ['.js', '.ts', '.tsx'];
 
-if (process.env.NODE_ENV === 'production') {
-  config.plugins.push(uglify());
+function external(id) {
+  return !id.startsWith('.') && !id.startsWith(root);
 }
 
-export default config;
+function getBabelOptions(targets) {
+  return {
+    ...createBabelConfig({ env: (env) => env === 'build' }, targets),
+    extensions,
+    comments: false,
+    babelHelpers: 'bundled',
+  };
+}
+
+function getEsbuild(target) {
+  return esbuild({
+    minify: false,
+    target,
+    tsconfig: path.resolve('./tsconfig.json'),
+  });
+}
+
+function createDeclarationConfig(input, output) {
+  return {
+    input,
+    output: {
+      dir: output,
+    },
+    external,
+    plugins: [typescript({ declaration: true, outDir: output })],
+  };
+}
+
+function createESMConfig(input, output) {
+  return {
+    input,
+    output: { file: output, format: 'esm' },
+    external,
+    plugins: [resolve({ extensions }), getEsbuild('node12'), sizeSnapshot()],
+  };
+}
+
+function createCommonJSConfig(input, output) {
+  return {
+    input,
+    output: { file: output, format: 'cjs', exports: 'named' },
+    external,
+    plugins: [
+      resolve({ extensions }),
+      babel(getBabelOptions({ ie: 11 })),
+      sizeSnapshot(),
+    ],
+  };
+}
+
+export default () => {
+  return [
+    createDeclarationConfig('src/index.ts', 'dist'),
+    createCommonJSConfig('src/index.ts', 'dist/index.js'),
+    createESMConfig('src/index.ts', 'dist/index.module.js'),
+    createCommonJSConfig('src/reducer.ts', 'dist/reducer.js'),
+    createESMConfig('src/reducer.ts', 'dist/reducer.module.js'),
+    createCommonJSConfig(
+      'src/ProgressBarProvider.tsx',
+      'dist/ProgressBarProvider.js'
+    ),
+    createESMConfig(
+      'src/ProgressBarProvider.tsx',
+      'dist/ProgressBarProvider.module.js'
+    ),
+  ];
+};

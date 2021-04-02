@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 
 function mapIdsToUsers(state, ids) {
-  return ids.map(id => state.entities.users[id]);
+  return ids.map((id) => state.entities.users[id]);
 }
 
 export function getContributors(state, owner, repo) {

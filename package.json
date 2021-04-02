@@ -28,22 +28,32 @@
       "import": "./index.module.js",
       "require": "./index.js",
       "types": "./index.d.ts"
+    },
+    "./reducer": {
+      "import": "./reducer.module.js",
+      "require": "./reducer.js",
+      "types": "./reducer.d.ts"
+    },
+    "./ProgressBarProvider": {
+      "import": "./ProgressBarProvider.module.js",
+      "require": "./ProgressBarProvider.js",
+      "types": "./ProgressBarProvider.d.ts"
     }
   },
   "scripts": {
     "prebuild": "shx rm -rf dist",
     "build": "rollup -c",
     "postbuild": "yarn copy",
-    "lint": "eslint --fix '{src,__tests__}/*.{js,ts,jsx,tsx}'",
-    "lint:ci": "eslint '{src,__tests__}/*.{js,ts,jsx,tsx}'",
+    "lint": "eslint --fix {src,__tests__}/*.{js,ts,jsx,tsx}",
+    "lint:ci": "eslint {src,__tests__}/*.{js,ts,jsx,tsx}",
     "prepare": "yarn build",
     "pretest": "tsc --noEmit --skipLibCheck",
     "prettier": "prettier --write \"{examples,src,__tests__}/**/*.{js,ts,tsx,md}\"",
     "prettier:diff": "prettier --list-different \"{examples,src,__tests__}/**/*.{js,ts,tsx,md}\"",
     "test": "jest",
-    "test:dev": "jest --watch --no-coverage",
+    "test:watch": "jest --watch --no-coverage",
     "test:coverage:watch": "jest --watch",
-    "copy": "shx mv dist/src/* dist && shx rm -rf dist/{src,__tests__} && shx cp dist/index.d.ts dist/index.module.d.ts && shx cp dist/hexToRgb.d.ts dist/hexToRgb.module.d.ts && shx cp dist/ProgressBarProvider.d.ts dist/ProgressBarProvider.module.d.ts && shx cp dist/reducer.d.ts dist/reducer.module.d.ts && shx cp dist/renderprops.d.ts dist/renderprops.module.d.ts && shx cp dist/useProgress.d.ts dist/useProgress.module.d.ts && downlevel-dts dist dist/ts3.4 && shx cp package.json readme.md LICENSE dist && json -I -f dist/package.json -e \"this.private=false; this.devDependencies=undefined; this.optionalDependencies=undefined; this.scripts=undefined; this.husky=undefined; this.prettier=undefined; this.jest=undefined; this['lint-staged']=undefined;\""
+    "copy": "shx mv dist/src/* dist && shx rm -rf dist/{src,__tests__} && shx cp dist/index.d.ts dist/index.module.d.ts && shx cp dist/hexToRgb.d.ts dist/hexToRgb.module.d.ts && shx cp dist/ProgressBarProvider.d.ts dist/ProgressBarProvider.module.d.ts && shx cp dist/reducer.d.ts dist/reducer.module.d.ts && shx cp dist/useProgress.d.ts dist/useProgress.module.d.ts && downlevel-dts dist dist/ts3.4 && shx cp package.json readme.md LICENSE dist && json -I -f dist/package.json -e \"this.private=false; this.devDependencies=undefined; this.optionalDependencies=undefined; this.scripts=undefined; this.husky=undefined; this.prettier=undefined; this.jest=undefined; this['lint-staged']=undefined;\""
   },
   "peerDependencies": {
     "react": ">=16.8",
@@ -75,25 +85,25 @@
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
     "downlevel-dts": "^0.7.0",
+    "esbuild": "^0.11.3",
     "eslint": "^7.19.0",
-    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-jest": "^24.3.3",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^4.3.8",
-    "immer": "^8.0.1",
+    "husky": "^6.0.0",
     "jest": "^26.6.3",
     "json": "^10.0.0",
     "lint-staged": "^10.5.4",
-    "optics-ts": "^2.0.0",
     "prettier": "^2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-test-renderer": "^17.0.2",
     "rollup": "^2.38.5",
+    "rollup-plugin-esbuild": "^3.0.2",
     "rollup-plugin-size-snapshot": "^0.12.0",
     "shx": "^0.3.3",
     "typescript": "^4.1.3"

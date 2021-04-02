@@ -39,17 +39,17 @@ const ContributorList = ({ isFetching, contributors, onReload }) => {
           Refetch
         </ReloadButton>
       </div>
-      {contributors.map(contributor => (
+      {contributors.map((contributor) => (
         <Contributor key={contributor.id} {...contributor} />
       ))}
     </ContributorsWrapper>
   );
 };
 
-const Contributors = props => {
+const Contributors = (props) => {
   const loadData = React.useCallback(
     (force = false) => props.loadContributors(OWNER, REPO, force),
-    [props.loadContributors],
+    [props.loadContributors]
   );
 
   React.useEffect(() => {
@@ -66,7 +66,7 @@ const Contributors = props => {
           <ContributorList
             isFetching={isFetching || !isLoaded}
             contributors={contributors}
-            onReload={event => {
+            onReload={(event) => {
               event.preventDefault();
               loadData(true);
             }}
@@ -77,9 +77,6 @@ const Contributors = props => {
   );
 };
 
-export default connect(
-  state => getContributors(state, OWNER, REPO),
-  {
-    loadContributors,
-  },
-)(Contributors);
+export default connect((state) => getContributors(state, OWNER, REPO), {
+  loadContributors,
+})(Contributors);

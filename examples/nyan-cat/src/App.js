@@ -32,8 +32,8 @@ const TriggerButton = styled.button`
   width: 11rem;
   background: transparent;
   color: #fff;
-  background-color: ${props => props.color};
-  border: 2px solid ${props => props.color};
+  background-color: ${(props) => props.color};
+  border: 2px solid ${(props) => props.color};
   cursor: pointer;
   outline: 0;
   transition: 0.5s;
@@ -46,7 +46,7 @@ function playAudio(audio) {
     !audio.ended &&
     audio.readyState > 2;
 
-  audio.volume = 0.7;
+  audio.volume = 0.3;
 
   if (!isPlaying) {
     audio.play();

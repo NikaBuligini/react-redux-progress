@@ -1,15 +1,23 @@
-module.exports = api => {
-  api.cache.forever();
-
-  const presets = ['babel-preset-nb'];
-  const plugins = [];
-
-  if (process.env.NODE_ENV === 'production') {
-    plugins.push('dev-expression', 'transform-react-remove-prop-types');
-  }
+module.exports = (api, targets) => {
+  // https://babeljs.io/docs/en/config-files#config-function-api
+  const isTestEnv = api.env('test');
 
   return {
-    presets,
-    plugins,
+    babelrc: false,
+    ignore: ['./node_modules'],
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          loose: true,
+          modules: isTestEnv ? 'commonjs' : false,
+          targets: isTestEnv ? { node: 'current' } : targets,
+        },
+      ],
+    ],
+    plugins: [
+      '@babel/plugin-transform-react-jsx',
+      ['@babel/plugin-transform-typescript', { isTSX: true }],
+    ],
   };
 };

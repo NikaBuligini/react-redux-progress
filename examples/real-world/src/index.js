@@ -22,12 +22,12 @@ delete window.__PRELOADED_STATE__;
 const store = configureStore(
   preloadedState,
   applyMiddleware(thunk, api, debounce),
-  reducers,
+  reducers
 );
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );

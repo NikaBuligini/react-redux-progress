@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 
-export default () => next => action => {
+export default () => (next) => (action) => {
   const { debounce } = action;
 
   if (debounce) {

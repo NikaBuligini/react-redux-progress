@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import { schema as Schema, normalize } from 'normalizr';
 import { camelizeKeys } from 'humps';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 
 const defaultHeaders = {
   'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ export const CALL_API = Symbol('Call API');
 
 // A Redux middleware that interprets actions with CALL_API info specified.
 // Performs the call and promises when such actions are dispatched.
-export default store => next => async action => {
+export default (store) => (next) => async (action) => {
   const callAPI = action[CALL_API];
   if (typeof callAPI === 'undefined') {
     return next(action);
@@ -103,7 +103,7 @@ export default store => next => async action => {
     throw new Error('Expected an array of three action types.');
   }
 
-  if (!types.every(t => typeof t === 'string')) {
+  if (!types.every((t) => typeof t === 'string')) {
     throw new Error('Expected action types to be strings.');
   }
 
@@ -127,7 +127,7 @@ export default store => next => async action => {
     schema,
     method,
     headers,
-    body,
+    body
   );
 
   if (restOptions.debounce) {
@@ -143,7 +143,7 @@ export default store => next => async action => {
         error: error.messages || ['Something bad happened'],
         errorCode: error.errorCode,
         ...additionalProps,
-      }),
+      })
     );
   }
 

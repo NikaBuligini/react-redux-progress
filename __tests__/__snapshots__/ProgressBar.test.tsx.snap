@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProgressBarProvier /> should render <ProgressBar /> 1`] = `
+exports[`<ProgressBarProvider /> should render <ProgressBar /> 1`] = `
 <div
   style={
     Object {
-      "left": "0",
-      "opacity": "0",
+      "left": 0,
+      "opacity": 0,
       "position": "fixed",
-      "top": "0",
+      "top": 0,
       "transition": "all 500mx ease-in-out",
       "visibility": "hidden",
       "width": "100%",
-      "zIndex": "-10",
+      "zIndex": -10,
     }
   }
 >
@@ -30,18 +30,18 @@ exports[`<ProgressBarProvier /> should render <ProgressBar /> 1`] = `
 </div>
 `;
 
-exports[`<ProgressBarProvier /> should render progress bar with className 1`] = `
+exports[`<ProgressBarProvider /> should render progress bar with className 1`] = `
 <div
   style={
     Object {
-      "left": "0",
-      "opacity": "0",
+      "left": 0,
+      "opacity": 0,
       "position": "fixed",
-      "top": "0",
+      "top": 0,
       "transition": "all 500mx ease-in-out",
       "visibility": "hidden",
       "width": "100%",
-      "zIndex": "-10",
+      "zIndex": -10,
     }
   }
 >
@@ -61,18 +61,18 @@ exports[`<ProgressBarProvier /> should render progress bar with className 1`] = 
 </div>
 `;
 
-exports[`<ProgressBarProvier /> should render progress bar with color hex 1`] = `
+exports[`<ProgressBarProvider /> should render progress bar with color hex 1`] = `
 <div
   style={
     Object {
-      "left": "0",
-      "opacity": "0",
+      "left": 0,
+      "opacity": 0,
       "position": "fixed",
-      "top": "0",
+      "top": 0,
       "transition": "all 500mx ease-in-out",
       "visibility": "hidden",
       "width": "100%",
-      "zIndex": "-10",
+      "zIndex": -10,
     }
   }
 >
@@ -91,18 +91,18 @@ exports[`<ProgressBarProvier /> should render progress bar with color hex 1`] = 
 </div>
 `;
 
-exports[`<ProgressBarProvier /> should render progress bar with color name 1`] = `
+exports[`<ProgressBarProvider /> should render progress bar with color name 1`] = `
 <div
   style={
     Object {
-      "left": "0",
-      "opacity": "0",
+      "left": 0,
+      "opacity": 0,
       "position": "fixed",
-      "top": "0",
+      "top": 0,
       "transition": "all 500mx ease-in-out",
       "visibility": "hidden",
       "width": "100%",
-      "zIndex": "-10",
+      "zIndex": -10,
     }
   }
 >
@@ -121,18 +121,18 @@ exports[`<ProgressBarProvier /> should render progress bar with color name 1`] =
 </div>
 `;
 
-exports[`<ProgressBarProvier /> should render progress bar with styles 1`] = `
+exports[`<ProgressBarProvider /> should render progress bar with styles 1`] = `
 <div
   style={
     Object {
-      "left": "0",
-      "opacity": "0",
+      "left": 0,
+      "opacity": 0,
       "position": "fixed",
-      "top": "0",
+      "top": 0,
       "transition": "all 500mx ease-in-out",
       "visibility": "hidden",
       "width": "100%",
-      "zIndex": "-10",
+      "zIndex": -10,
     }
   }
 >

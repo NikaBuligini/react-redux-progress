@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import merge from 'lodash/merge';
 import fetch from './fetch';
-import progress from '../../../../reducer';
+import { progress } from '../../../../dist/reducer';
 
 const defaultEntities = {};
 

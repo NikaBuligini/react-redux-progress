@@ -10,11 +10,13 @@ import Nyan6 from './nyan6.svg';
 
 const cats = [Nyan1, Nyan2, Nyan3, Nyan4, Nyan5, Nyan6];
 
-const Cat = () => {
+export const Cat = () => {
   const [iteration, setIteration] = React.useState(0);
 
   const handleIteration = React.useCallback(() => {
-    setIteration(prevIteration => (prevIteration >= 5 ? 0 : prevIteration + 1));
+    setIteration((prevIteration) =>
+      prevIteration >= 5 ? 0 : prevIteration + 1
+    );
   }, []);
 
   useInterval(handleIteration, 100);
@@ -26,5 +28,3 @@ const Cat = () => {
     />
   );
 };
-
-export default Cat;

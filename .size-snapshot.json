@@ -1,0 +1,87 @@
+{
+  "index.module.js": {
+    "bundled": 2731,
+    "minified": 1455,
+    "gzipped": 599,
+    "treeshaked": {
+      "rollup": {
+        "code": 14,
+        "import_statements": 14
+      },
+      "webpack": {
+        "code": 998
+      }
+    }
+  },
+  "hexToRgb.module.js": {
+    "bundled": 5292,
+    "minified": 3434,
+    "gzipped": 1465,
+    "treeshaked": {
+      "rollup": {
+        "code": 3122,
+        "import_statements": 0
+      },
+      "webpack": {
+        "code": 4072
+      }
+    }
+  },
+  "ProgressBarProvider.module.js": {
+    "bundled": 10676,
+    "minified": 6493,
+    "gzipped": 2718,
+    "treeshaked": {
+      "rollup": {
+        "code": 3125,
+        "import_statements": 14
+      },
+      "webpack": {
+        "code": 6907
+      }
+    }
+  },
+  "reducer.module.js": {
+    "bundled": 534,
+    "minified": 310,
+    "gzipped": 199,
+    "treeshaked": {
+      "rollup": {
+        "code": 0,
+        "import_statements": 0
+      },
+      "webpack": {
+        "code": 951
+      }
+    }
+  },
+  "useProgress.module.js": {
+    "bundled": 3293,
+    "minified": 1504,
+    "gzipped": 612,
+    "treeshaked": {
+      "rollup": {
+        "code": 14,
+        "import_statements": 14
+      },
+      "webpack": {
+        "code": 998
+      }
+    }
+  },
+  "index.js": {
+    "bundled": 3480,
+    "minified": 1680,
+    "gzipped": 659
+  },
+  "reducer.js": {
+    "bundled": 683,
+    "minified": 408,
+    "gzipped": 261
+  },
+  "ProgressBarProvider.js": {
+    "bundled": 11485,
+    "minified": 6525,
+    "gzipped": 2728
+  }
+}

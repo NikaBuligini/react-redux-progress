@@ -26,7 +26,10 @@ module.exports = {
       },
       {
         test: /\.(ogg)(\?.*)?$/,
-        use: 'file-loader?name=/audio/[name].[ext]',
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+        },
       },
     ],
   },

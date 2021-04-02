@@ -19,6 +19,6 @@ const App = ({ isProgressActive }) => (
   </div>
 );
 
-export default connect(state => ({
+export default connect((state) => ({
   isProgressActive: state.progress.isActive,
 }))(App);

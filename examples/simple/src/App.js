@@ -46,7 +46,7 @@ const App = () => {
         }}
       >
         <Button
-          onClick={() => setActive(wasActive => !wasActive)}
+          onClick={() => setActive((wasActive) => !wasActive)}
           isProgressActive={isActive}
         >
           {isActive ? 'Stop' : 'Start'}

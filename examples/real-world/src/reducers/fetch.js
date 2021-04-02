@@ -14,7 +14,7 @@ export const fetchStatus = ({
     throw new Error('Expected types to be an array of three elements.');
   }
 
-  if (!types.every(t => typeof t === 'string')) {
+  if (!types.every((t) => typeof t === 'string')) {
     throw new Error('Expected types to be strings.');
   }
 
@@ -92,7 +92,7 @@ export const fetchStatus = ({
 
 const fetch = combineReducers({
   contributorsByRepo: fetchStatus({
-    mapActionToKey: action => action.key,
+    mapActionToKey: (action) => action.key,
     types: [
       ActionTypes.CONTRIBUTORS_REQUEST,
       ActionTypes.CONTRIBUTORS_SUCCESS,

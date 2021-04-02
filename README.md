@@ -1,5 +1,5 @@
 # react-redux-progress
-Progress bar for React and Redux applications
+Progress bar for React applications
 
 ![](https://media.giphy.com/media/26u48f9ry3CH9D9Vm/giphy.gif)
 
@@ -41,7 +41,7 @@ You can find the library on `window.ReactReduxProgress`.
 
 ### Custom Progress
 
-```js
+```tsx
 import { useProgress } from 'react-redux-progress';
 
 // give percent any shape you want
@@ -52,22 +52,10 @@ const MyProgress = ({ isActive }) => {
 };
 ```
 
-### RenderProps
+### Simple usage
 
-```js
-import Progress from 'react-redux-progress/renderprops';
-
-const MyProgress = ({ isActive }) => (
-  <Progress isActive={isActive}>
-    {percent => <div>{`${percent}%`}</div>}
-  </Progress>
-);
-```
-
-### Simple usage with prepared component
-
-```js
-import { ProgressBarProvider } from 'react-redux-progress';
+```tsx
+import { ProgressBarProvider } from 'react-redux-progress/ProgressBarProvider';
 
 // default color is #77b6ff
 const Layout = ({ isProgressActive, children }) => (
@@ -80,9 +68,9 @@ const Layout = ({ isProgressActive, children }) => (
 
 You can store isProgressActive variable in redux store and control it with your actions
 
-```js
+```tsx
 import { combineReducers } from 'redux';
-import progress from 'react-redux-progress/reducer'
+import { progress } from 'react-redux-progress/reducer'
 
 const rootReducers = combineReducers({
   progress,
@@ -94,25 +82,25 @@ export default rootReducers;
 
 Get progress status
 
-```js
-import { ProgressBarProvider } from 'react-redux-progress';
-import { connect } from 'react-redux';
+```tsx
+import { useSelector } from 'react-redux';
+import { ProgressBarProvider } from 'react-redux-progress/ProgressBarProvider';
 
-const Layout = ({ isProgressActive, children }) => (
-  <div>
-    <ProgressBarProvider isActive={isProgressActive} />
-    {children}
-  </div>
-);
-
-export default connect(
-  state => ({ isProgressActive: state.progress.isActive })
-)(Layout);
+const Layout = ({ isProgressActive, children }) => {
+  const isProgressActive = useSelector(state => state.progress.isActive);
+  
+  return (
+    <div>
+      <ProgressBarProvider isActive={isProgressActive} />
+      {children}
+    </div>
+  );
+};
 ```
 
 Async action
 
-```js
+```ts
 const startAction = (progressId) => ({
   type: 'START_ASYNC_ACTION', // your action name
   progressId,
@@ -137,7 +125,7 @@ export function startAsyncAction() {
 }
 ```
 
-## Prop Types for useProgress(isActive: boolean, options? = {}) hook
+## Prop Types for useProgress(isActive: boolean, options?: Config = {}) hook
 |   Property   |   Type   | Required? | Default |              Description              |
 | :----------: | :------: | :-------: | :-----: | :-----------------------------------: |
 |  maxPercent  | Integer  |           |  `85`   |          Progress stop point          |

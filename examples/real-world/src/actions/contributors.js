@@ -24,7 +24,7 @@ export function loadContributors(owner, repo, force, callback) {
     const { contributors: loadedContributors } = getContributors(
       getState(),
       owner,
-      repo,
+      repo
     );
 
     if (force || loadedContributors.length === 0) {
