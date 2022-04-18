@@ -46,14 +46,14 @@
     "postbuild": "yarn copy",
     "lint": "eslint --fix {src,__tests__}/*.{js,ts,jsx,tsx}",
     "lint:ci": "eslint {src,__tests__}/*.{js,ts,jsx,tsx}",
-    "prepare": "yarn build",
+    "prepare": "yarn husky install && yarn build",
     "pretest": "tsc --noEmit --skipLibCheck",
     "prettier": "prettier --write \"{examples,src,__tests__}/**/*.{js,ts,tsx,md}\"",
     "prettier:diff": "prettier --list-different \"{examples,src,__tests__}/**/*.{js,ts,tsx,md}\"",
     "test": "jest",
     "test:watch": "jest --watch --no-coverage",
     "test:coverage:watch": "jest --watch",
-    "copy": "shx mv dist/src/* dist && shx rm -rf dist/{src,__tests__} && shx cp dist/index.d.ts dist/index.module.d.ts && shx cp dist/hexToRgb.d.ts dist/hexToRgb.module.d.ts && shx cp dist/ProgressBarProvider.d.ts dist/ProgressBarProvider.module.d.ts && shx cp dist/reducer.d.ts dist/reducer.module.d.ts && shx cp dist/useProgress.d.ts dist/useProgress.module.d.ts && downlevel-dts dist dist/ts3.4 && shx cp package.json README.md LICENSE dist && json -I -f dist/package.json -e \"this.private=false; this.devDependencies=undefined; this.optionalDependencies=undefined; this.scripts=undefined; this.husky=undefined; this.prettier=undefined; this.jest=undefined; this['lint-staged']=undefined;\""
+    "copy": "shx mv dist/src/* dist && shx rm -rf dist/{src,__tests__} && shx cp dist/index.d.ts dist/index.module.d.ts && shx cp dist/hexToRgb.d.ts dist/hexToRgb.module.d.ts && shx cp dist/ProgressBarProvider.d.ts dist/ProgressBarProvider.module.d.ts && shx cp dist/reducer.d.ts dist/reducer.module.d.ts && shx cp dist/useProgress.d.ts dist/useProgress.module.d.ts && downlevel-dts dist dist/ts3.4 && shx cp package.json README.md LICENSE dist && json -I -f dist/package.json -e \"this.private=false; this.devDependencies=undefined; this.optionalDependencies=undefined; this.scripts=undefined; this.husky=undefined; this.prettier=undefined; this.jest=undefined;\""
   },
   "peerDependencies": {
     "react": ">=16.8",
@@ -75,43 +75,37 @@
     "@babel/plugin-transform-typescript": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
     "@rollup/plugin-babel": "^5.2.3",
-    "@rollup/plugin-node-resolve": "^11.1.1",
+    "@rollup/plugin-node-resolve": "^13.2.1",
     "@rollup/plugin-typescript": "^8.1.1",
-    "@testing-library/react": "^11.2.5",
-    "@types/jest": "^26.0.20",
-    "@types/react": "^17.0.1",
-    "@types/react-dom": "^17.0.0",
-    "@types/react-test-renderer": "^17.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.14.2",
-    "@typescript-eslint/parser": "^4.14.2",
-    "downlevel-dts": "^0.7.0",
-    "esbuild": "^0.11.3",
-    "eslint": "^7.19.0",
+    "@testing-library/react": "^13.1.1",
+    "@types/jest": "^27.4.1",
+    "@types/react": "^18.0.5",
+    "@types/react-dom": "^18.0.1",
+    "@types/react-test-renderer": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
+    "downlevel-dts": "^0.9.0",
+    "esbuild": "^0.14.36",
+    "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jest": "^24.3.3",
-    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-jest": "^26.1.4",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^6.0.0",
-    "jest": "^26.6.3",
-    "json": "^10.0.0",
-    "lint-staged": "^10.5.4",
-    "prettier": "^2.2.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-test-renderer": "^17.0.2",
+    "husky": "^7.0.4",
+    "jest": "^27.5.1",
+    "json": "^11.0.0",
+    "prettier": "^2.6.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-test-renderer": "^18.0.0",
     "rollup": "^2.38.5",
-    "rollup-plugin-esbuild": "^3.0.2",
+    "rollup-plugin-esbuild": "^4.9.1",
     "rollup-plugin-size-snapshot": "^0.12.0",
-    "shx": "^0.3.3",
-    "typescript": "^4.1.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "shx": "^0.3.4",
+    "typescript": "^4.6.3"
   },
   "jest": {
     "rootDir": ".",
@@ -133,11 +127,6 @@
     "collectCoverageFrom": [
       "src/**/*.{js,ts,tsx}",
       "__tests__/**/*.{js,ts,tsx}"
-    ]
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx,md}": [
-      "prettier --write"
     ]
   },
   "keywords": [

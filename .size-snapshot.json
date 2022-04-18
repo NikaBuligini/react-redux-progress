@@ -1,6 +1,6 @@
 {
   "index.module.js": {
-    "bundled": 2731,
+    "bundled": 2743,
     "minified": 1455,
     "gzipped": 599,
     "treeshaked": {
@@ -28,16 +28,16 @@
     }
   },
   "ProgressBarProvider.module.js": {
-    "bundled": 10676,
-    "minified": 6493,
-    "gzipped": 2718,
+    "bundled": 10922,
+    "minified": 6668,
+    "gzipped": 2763,
     "treeshaked": {
       "rollup": {
-        "code": 3125,
+        "code": 14,
         "import_statements": 14
       },
       "webpack": {
-        "code": 6907
+        "code": 6989
       }
     }
   },

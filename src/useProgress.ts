@@ -4,26 +4,17 @@ function getDefaultIncrement() {
   return (Math.random() + 1 - Math.random()) * 3;
 }
 
-interface StartAction {
-  type: 'start';
-}
-interface SetAction {
-  type: 'set';
-  payload: number;
-}
-interface IncrementAction {
+type StartAction = { type: 'start' };
+type SetAction = { type: 'set'; payload: number };
+type IncrementAction = {
   type: 'increment';
   payload: {
     maxPercent: number;
     add: number;
   };
-}
-interface FinishAction {
-  type: 'finish';
-}
-interface ResetAction {
-  type: 'reset';
-}
+};
+type FinishAction = { type: 'finish' };
+type ResetAction = { type: 'reset' };
 
 type Actions =
   | StartAction
