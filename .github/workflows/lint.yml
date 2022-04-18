@@ -33,7 +33,7 @@ jobs:
           path: "."
           key: ${{ github.sha }}
 
-  lint:
+  publish:
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -43,14 +43,7 @@ jobs:
           path: "."
           key: ${{ github.sha }}
       - run: yarn lint:ci
-
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: actions/cache@v1
-        id: restore-build
-        with:
-          path: "."
-          key: ${{ github.sha }}
       - run: yarn test
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
