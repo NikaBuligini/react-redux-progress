@@ -1,6 +1,6 @@
 {
   "index.module.js": {
-    "bundled": 2743,
+    "bundled": 2785,
     "minified": 1455,
     "gzipped": 599,
     "treeshaked": {
@@ -28,16 +28,16 @@
     }
   },
   "ProgressBarProvider.module.js": {
-    "bundled": 10922,
-    "minified": 6668,
-    "gzipped": 2763,
+    "bundled": 10056,
+    "minified": 5911,
+    "gzipped": 2503,
     "treeshaked": {
       "rollup": {
         "code": 14,
         "import_statements": 14
       },
       "webpack": {
-        "code": 6989
+        "code": 6552
       }
     }
   },
@@ -80,8 +80,8 @@
     "gzipped": 261
   },
   "ProgressBarProvider.js": {
-    "bundled": 11485,
-    "minified": 6525,
-    "gzipped": 2728
+    "bundled": 11506,
+    "minified": 6545,
+    "gzipped": 2736
   }
 }

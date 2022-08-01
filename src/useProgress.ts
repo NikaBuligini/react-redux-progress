@@ -47,7 +47,7 @@ export function reducer(state: number, action: Actions) {
   }
 }
 
-export function useInterval(callback: () => void, delay: number | null) {
+function useInterval(callback: () => void, delay: number | null) {
   const savedCallback = useRef(callback);
 
   useEffect(() => {

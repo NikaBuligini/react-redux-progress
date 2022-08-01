@@ -9,28 +9,28 @@
     "webpack": "webpack"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.6.0",
+    "@babel/polyfill": "^7.12.1",
     "humps": "^2.0.1",
     "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.15",
-    "normalizr": "^3.4.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-redux": "^7.1.1",
-    "react-redux-progress": "^2.1.1",
-    "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0",
-    "regenerator-runtime": "^0.13.3",
-    "styled-components": "^5.2.1",
+    "normalizr": "^3.6.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.2",
+    "react-redux-progress": "^2.2.3",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
+    "regenerator-runtime": "^0.13.9",
+    "styled-components": "^5.3.5",
     "uuid": "^8.3.2",
-    "webpack": "^5.28.0",
-    "webpack-cli": "^4.6.0"
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   },
   "devDependencies": {
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^8.2.5",
     "babel-preset-nb": "^1.0.9",
-    "html-webpack-plugin": "^5.3.1",
-    "serve": "^11.2.0",
-    "webpack-dev-server": "^3.11.2"
+    "html-webpack-plugin": "^5.5.0",
+    "serve": "^14.0.1",
+    "webpack-dev-server": "^4.9.3"
   }
 }

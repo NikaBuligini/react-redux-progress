@@ -1,5 +1,4 @@
 import React from 'react';
-import { useInterval } from 'react-redux-progress/useProgress';
 
 import Nyan1 from './nyan1.svg';
 import Nyan2 from './nyan2.svg';
@@ -9,6 +8,25 @@ import Nyan5 from './nyan5.svg';
 import Nyan6 from './nyan6.svg';
 
 const cats = [Nyan1, Nyan2, Nyan3, Nyan4, Nyan5, Nyan6];
+
+function useInterval(callback, delay) {
+  const savedCallback = useRef(callback);
+
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+
+    if (delay !== null) {
+      const id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+}
 
 export const Cat = () => {
   const [iteration, setIteration] = React.useState(0);

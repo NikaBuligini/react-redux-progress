@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProgressBarProvider as ProgressBar } from 'react-redux-progress';
+import { ProgressBarProvider as ProgressBar } from 'react-redux-progress/ProgressBarProvider';
 
 import NestedCard from './NestedCard';
 import useTimeout from './useTimeout';
