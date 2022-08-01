@@ -41,16 +41,13 @@
     }
   },
   "scripts": {
-    "prebuild": "shx rm -rf dist",
-    "build": "rollup -c",
-    "postbuild": "pnpm copy",
+    "build": "shx rm -rf dist && rollup -c && pnpm copy",
     "lint": "eslint --fix {src,__tests__}/*.{js,ts,jsx,tsx}",
     "lint:ci": "eslint {src,__tests__}/*.{js,ts,jsx,tsx}",
     "prepare": "pnpm husky install && pnpm build",
-    "pretest": "tsc --noEmit --skipLibCheck",
     "prettier": "prettier --write \"{examples,src,__tests__}/**/*.{js,ts,tsx,md}\"",
     "prettier:diff": "prettier --list-different \"{examples,src,__tests__}/**/*.{js,ts,tsx,md}\"",
-    "test": "jest",
+    "test": "tsc --noEmit --skipLibCheck && jest",
     "test:watch": "jest --watch --no-coverage",
     "test:coverage:watch": "jest --watch",
     "copy": "shx mv dist/src/* dist && shx rm -rf dist/{src,__tests__} && shx cp dist/index.d.ts dist/index.module.d.ts && shx cp dist/hexToRgb.d.ts dist/hexToRgb.module.d.ts && shx cp dist/ProgressBarProvider.d.ts dist/ProgressBarProvider.module.d.ts && shx cp dist/reducer.d.ts dist/reducer.module.d.ts && shx cp dist/useProgress.d.ts dist/useProgress.module.d.ts && downlevel-dts dist dist/ts3.4 && shx cp package.json README.md LICENSE dist && json -I -f dist/package.json -e \"this.private=false; this.devDependencies=undefined; this.optionalDependencies=undefined; this.scripts=undefined; this.husky=undefined; this.prettier=undefined; this.jest=undefined;\""
