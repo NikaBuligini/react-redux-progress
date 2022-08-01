@@ -61,6 +61,6 @@ jobs:
       - run: pnpm lint:ci
       - run: pnpm test
       - uses: JS-DevTools/npm-publish@v1
-        working-directory: "./dist"
         with:
+          package: "./dist/package.json"
           token: ${{ secrets.NPM_TOKEN }}
