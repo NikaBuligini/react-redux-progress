@@ -1,6 +1,6 @@
 {
   "name": "react-redux-progress",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "Progress bar for React and Redux applications",
   "author": "Nikoloz Buligini",
   "license": "MIT",

@@ -55,6 +55,9 @@ jobs:
         with:
           path: "."
           key: ${{ github.sha }}
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7
       - run: pnpm lint:ci
       - run: pnpm test
       - uses: JS-DevTools/npm-publish@v1
