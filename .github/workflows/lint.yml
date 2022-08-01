@@ -25,8 +25,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-      - run: yarn install --frozen-lockfile --check-files
-      - run: yarn build
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
       - uses: actions/cache@v1
         id: cache-build
         with:
@@ -42,8 +42,8 @@ jobs:
         with:
           path: "."
           key: ${{ github.sha }}
-      - run: yarn lint:ci
-      - run: yarn test
+      - run: pnpm lint:ci
+      - run: pnpm test
       - uses: JS-DevTools/npm-publish@v1
         with:
           package: "./dist/package.json"

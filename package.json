@@ -43,10 +43,10 @@
   "scripts": {
     "prebuild": "shx rm -rf dist",
     "build": "rollup -c",
-    "postbuild": "yarn copy",
+    "postbuild": "pnpm copy",
     "lint": "eslint --fix {src,__tests__}/*.{js,ts,jsx,tsx}",
     "lint:ci": "eslint {src,__tests__}/*.{js,ts,jsx,tsx}",
-    "prepare": "yarn husky install && yarn build",
+    "prepare": "pnpm husky install && pnpm build",
     "pretest": "tsc --noEmit --skipLibCheck",
     "prettier": "prettier --write \"{examples,src,__tests__}/**/*.{js,ts,tsx,md}\"",
     "prettier:diff": "prettier --list-different \"{examples,src,__tests__}/**/*.{js,ts,tsx,md}\"",

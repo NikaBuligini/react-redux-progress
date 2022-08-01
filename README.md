@@ -22,6 +22,12 @@ Using [yarn](https://yarnpkg.com/):
 $ yarn add react-redux-progress
 ```
 
+Using [pnpm](https://pnpm.io/):
+
+```shell
+$ pnpm install react-redux-progress
+```
+
 ```js
 // using ES6 modules
 import { useProgress } from 'react-redux-progress';
@@ -152,5 +158,5 @@ I actively welcome pull requests; learn how to [contribute](https://github.com/N
 ## Tests
 
 ```shell
-$ yarn test
+$ pnpm test
 ```

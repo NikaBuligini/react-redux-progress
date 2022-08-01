@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn prettier --write && yarn lint && yarn test
+pnpm prettier --write && pnpm lint && pnpm test

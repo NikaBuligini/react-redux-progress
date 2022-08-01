@@ -70,7 +70,7 @@
     }
   },
   "index.js": {
-    "bundled": 3480,
+    "bundled": 3481,
     "minified": 1680,
     "gzipped": 659
   },
@@ -80,7 +80,7 @@
     "gzipped": 261
   },
   "ProgressBarProvider.js": {
-    "bundled": 11506,
+    "bundled": 11507,
     "minified": 6545,
     "gzipped": 2736
   }
